@@ -3,34 +3,34 @@ version: '3.4'
 services: 
   frontend-react:
     build:
-      context: '../frontend-react'
+      context: '../frontend'
     ports: 
       - '3000:3000'
     volumes: 
-      - '../frontend-react:/home/node/app:delegated'
+      - '../frontend:/home/node/app:delegated'
     command: 'run start'
-    container_name: 'frontend-react'
+    container_name: 'frontend'
 
-  mongo: 
-    image: mongo:5.0.2
-    ports: 
-      - '27017:27017'
-    environment: 
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-    container_name: 'mongo'
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: getitdone
+    ports:
+      - '5432:5432'
 
-  backend-node:
+
+  backend:
     depends_on: 
-      - mongo
+      - db
     build:
-      context: '../backend-node'
+      context: '../backend'
     ports: 
       - '8081:3000'
-      - '9000:9000'
-    environment: 
-      MONGODB_URI: mongodb://root:root@mongo/if18?authSource=admin
+    environment:
+      DATABASE_URL: postgres://user:pass@postgres:5432/db
     volumes: 
-      - '../backend-node:/home/node/app:delegated'
-    command: 'run dev'
-    container_name: 'backend-node'
+      - '../backend:/home/node/app:delegated'
+    command: 'npm run'
+    container_name: 'backend'
