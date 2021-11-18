@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
+import { Link as RouterLink, MemoryRouter as Router } from 'react-router-dom';
 
 function Home() {
   return (
@@ -31,6 +32,17 @@ function Home() {
         <Fab disabled aria-label="like">
           <FavoriteIcon />
         </Fab>
+      </Box>
+
+      <Box sx={{ '& > :not(style)': { m: 1 } }}>
+        <Stack spacing={2}>
+          <Button component={RouterLink} to="/login">
+            LogIn page
+          </Button>
+          <Button component={RouterLink} to="/signup">
+            SignUp page
+          </Button>
+        </Stack>
       </Box>
     </div>
   );
