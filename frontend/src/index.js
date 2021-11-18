@@ -4,9 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import 'typeface-roboto'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Webapp from './webapp';
+import theme from './webapp/theme';
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Webapp>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Webapp>
   </React.StrictMode>,
   document.getElementById('root')
 );
