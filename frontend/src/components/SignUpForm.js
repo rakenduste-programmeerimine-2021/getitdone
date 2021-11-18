@@ -48,7 +48,6 @@ function SignUpForm() {
           id="lastName"
           label="Last Name"
           name="lastName"
-          autoFocus
         />
         <TextField
           margin="normal"
@@ -57,7 +56,6 @@ function SignUpForm() {
           id="email"
           label="Email Address"
           name="email"
-          autoFocus
         />
         <TextField
           margin="normal"
