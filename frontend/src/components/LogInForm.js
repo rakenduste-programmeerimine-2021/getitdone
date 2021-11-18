@@ -9,12 +9,18 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { Link as RouterLink, MemoryRouter as Router } from 'react-router-dom';
+import { Context } from "../webapp";
+import { useContext } from "react";
+import { loginUser, logoutUser } from "../webapp/actions";
 
 
 //default MUI LogIn page, based on
 //https://github.com/mui-org/material-ui/blob/master/docs/src/pages/getting-started/templates/sign-in/SignIn.js
 
 function LogInForm() {
+
+  const [state, dispatch] = useContext(Context);
+
   return(
     <Box
       sx={{
