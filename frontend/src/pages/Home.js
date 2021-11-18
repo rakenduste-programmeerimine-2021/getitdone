@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link as RouterLink, MemoryRouter as Router } from 'react-router-dom';
+import Task from '../components/Task'
 
 function Home() {
   return (
@@ -44,6 +45,13 @@ function Home() {
           </Button>
         </Stack>
       </Box>
+
+      <div>
+        <Task>
+
+        </Task>
+      </div>
+
     </div>
   );
 }
