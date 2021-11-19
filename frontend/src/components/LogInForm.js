@@ -34,11 +34,11 @@ function LogInForm() {
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
-        Sign in
+        Log in
       </Typography>
       {/*TODO HANDLE SUBMIT*/}
       {/*<Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>*/}
-      <Box component="form" noValidate sx={{ mt: 1 }}>
+      <Box component="form" noValidate sx={{ mt: 1, ml: 3, mr:3 }}>
         <TextField
           margin="normal"
           required
@@ -72,12 +72,12 @@ function LogInForm() {
           Sign In
         </Button>
         <Grid container>
-          <Grid item xs>
+          <Grid item sx={{ mr: 3 }} xs>
             <Link href="#" variant="body2">
               Forgot password?
             </Link>
           </Grid>
-          <Grid item>
+          <Grid item xs>
             <Link component={RouterLink} to="/signup" variant="body2">
               {"Don't have an account? Sign Up"}
             </Link>
