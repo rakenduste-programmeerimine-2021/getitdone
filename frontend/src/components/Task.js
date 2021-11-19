@@ -19,6 +19,9 @@ import Paper from '@mui/material/Paper';
 import CardActionArea from '@mui/material/CardActionArea';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Avatar from '@mui/material/Avatar';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import Fab from '@mui/material/Fab';
 
 //TODO desc max character len
 //TODO kui lisada pilt, jagatakse disc ruum pooleks
@@ -29,10 +32,16 @@ function Task() {
 
   const tasks = [1, 2, 3,];
 
+  //TODO max desc len
+
   //const TEMP_desc = "Lorem Ipsum is simply dummy text of the "
-  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-/*  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."*/
+  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+
+
   const TEMP_title = "Task Name - eriti pikk task name"
+
+  const TEMP_dateStr = '12.05.2022 20:53'
 
 
   return (
@@ -40,6 +49,7 @@ function Task() {
     <Container sx={{ py: 10 }} maxWidth="md">
       <Grid container spacing={5} direction="column">
         {tasks.map((task) => (
+          //TODO remove this container
           <Grid item key={task} xs={12} sm={6} md={4}>
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               {/*<CardActionArea>*/}
@@ -47,42 +57,85 @@ function Task() {
               {/*<Grid container rowSpacing={1} columnSpacing={3} >*/}
               <Grid container p={3}>
 
-                <Grid container item xs={9}>
-                  <Grid item pr={2} xs={9} >
-                    <Paper sx={{ width: '100%', height: '100%', maxHeight: '45px' }} elevation={2} >
-                      <Typography align={'left'} noWrap variant="h6" >
+                <Grid container item md={9} xs={8}>
+                  <Grid item pr={2} pb={1} xs={9} >
+                    <Paper sx={{ width: '100%', height: '100%', maxHeight: '45px', minWidth: '250px' }} elevation={2} >
+                      <Typography align={'left'} sx={{ p: '6px' }} noWrap variant="h6" >
                         {TEMP_title}
                       </Typography>
                     </Paper>
                   </Grid>
-                  <Grid item sx={{ width: '100%' }} xs={3}>
+                  <Grid item sx={{ width: '100%', minWidth: '150px' }} xs={3}>
                     <Paper sx={{ width: '100%', height: '100%', maxHeight: '45px' }} elevation={2} >
-                      <Grid container item xs={12}>
-                        <Grid item xs={3} >
-                          <Avatar sx={{  bgcolor: 'secondary.main' }}>
+                      <Grid container item justify="left"
+                        alignItems="center" sx={{ width: '100%', height: '100%', maxHeight: '45px' }} xs={12}>
+                        <Grid item sx={{ margin: '4px' }} xs={2} >
+                          <Avatar sx={{
+                            bgcolor: 'primary.main',
+                            width: '35px',
+                            height: '35px'
+                          }}>
                           </Avatar>
                         </Grid>
-                        <Grid item xs={3} >
-                          <Avatar sx={{ bgcolor: 'secondary.main' }}>
+                        <Grid item sx={{ margin: '4px' }} xs={2} >
+                          <Avatar sx={{
+                            bgcolor: 'primary.main',
+                            width: '35px',
+                            height: '35px'
+                          }}>
                           </Avatar>
+                        </Grid>
+                        <Grid item sx={{ margin: '4px' }} xs={2} >
+                          <Avatar sx={{
+                            bgcolor: 'primary.main',
+                            width: '35px',
+                            height: '35px'
+                          }}>
+                          </Avatar>
+                        </Grid>
+                        <Grid item sx={{ margin: '4px' }} display={{ xs: "none", md: "block" }} xs={2} >
+                          <Avatar sx={{
+                            bgcolor: 'primary.main',
+                            width: '35px',
+                            height: '35px'
+                          }}>
+                          </Avatar>
+                        </Grid>
+                        {/*TODO some hidden element here*/}
+                        <Grid item sx={{ margin: '4px' }} display={{ xs: "block", md: "none" }} xs={2} >
+                          <Avatar sx={{
+                            bgcolor: 'red',
+                            width: '35px',
+                            height: '35px'
+                          }}>
+                          </Avatar>
+                        </Grid>
+                        {/*TODO avatar overflow handle here*/}
+                        <Grid item xs={1} >
                         </Grid>
                       </Grid>
                     </Paper>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item sx={{ width: '100%', height: '100%', pt: '7px', pb: '7px'}} xs={12}>
                     {/*sx={{ width: '100%', height: '100%' }}*/}
-                    <Typography noWrap variant="body2">
+                    {/*<Typography noWrap sx={{ width: '100%', height: '100%', maxWidth: '600px' }} variant="body2">*/}
+                    <Typography sx={{
+                      width: '100%',
+                      minHeight: '60px',
+                      maxHeight: '25px',
+                      overflow: "hidden",
+                    }} gutterBottom variant="body2">
                       {TEMP_desc}
                     </Typography>
                   </Grid>
                 </Grid>
 
-                <Grid xs={1}>
+                <Grid item  xs={1}>
                 </Grid>
 
-                <Grid xs={2}>
+                <Grid item sx={{ minWidth: '70px', minHeight: '70px' }} md={2} xs={3}>
                   <CardActionArea>
-                    <Paper sx={{ width: '100%', height: '100%'}} elevation={2} >
+                    <Paper sx={{ width: '100%', height: '100%' }} elevation={2} >
                       <CheckCircleOutlineIcon
                         sx={{
                           width: '100%',
@@ -92,37 +145,41 @@ function Task() {
                     </Paper>
                   </CardActionArea>
                 </Grid>
-
-
-
-                {/*<Grid item xs={6}>*/}
-                {/*  <CardMedia*/}
-                {/*    component="img"*/}
-                {/*    sx={{*/}
-                {/*      // 16:9*/}
-                {/*      pt: '2%',*/}
-                {/*      width: '20%',*/}
-                {/*      height: '20%',*/}
-                {/*    }}*/}
-                {/*    image="https://source.unsplash.com/random"*/}
-                {/*    alt="random"*/}
-                {/*  />*/}
-                {/*</Grid>*/}
-
-
-                <Grid container item xs={9}>
+                {/*<Grid container item sx={{ maxHeight: '45px' }} xs={8}>*/}
+                <Grid container item sx={{ maxHeight: '45px', maxWidth: '355px', minWidth: '355px' }} xs={8}>
                   <Grid item xs={6}>
-                    <Paper sx={{ width: '100%', height: '100%' }} elevation={1} >
-                      <Typography variant="h6">
-                        12.05.2022 20:53
+                  {/*<Grid item sx={{ width: '100%', height: '100%', minWidth: '70px' }} xs={6}>*/}
+                    <Paper elevation={1} >
+                      <Typography sx={{
+                        //display: "-webkit-box",
+                        //boxOrient: "vertical",
+                        //lineClamp: 2,
+                        wordBreak: "keep-all",
+                        //overflow: "hidden",
+                        //maxHeight: '45px'
+                        p: '6px',
+
+                      }} variant="h6">
+                        {TEMP_dateStr}
                       </Typography>
                     </Paper>
                   </Grid>
-                  <Grid item sx={{ width: '100%', height: '100%'}} xs={6}>
-                    <CardActions>
-                      <Button sx={{ cursor: 'pointer' }} size="small">EDIT</Button>
-                    </CardActions>
+                  <Grid item xs={1}>
                   </Grid>
+                  <Grid item display={{ xs: "none", md: "block" }} xs={2}>
+                  </Grid>
+                  {/*<Grid item md={2} xs={1}>*/}
+                  <Grid item xs={1}>
+                    <Fab sx={{ width: '45px', height: '45px' }} color="secondary" aria-label="edit" >
+                      <EditIcon >
+                        
+                      </EditIcon>
+                    </Fab>
+                  </Grid>
+                  <Grid item xs={2}>
+                  </Grid>
+                </Grid>
+                <Grid item xs={2}>
                 </Grid>
               </Grid>
             </Paper>
