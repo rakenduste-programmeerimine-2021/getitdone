@@ -29,8 +29,8 @@ services:
     ports: 
       - '8081:3000'
     environment:
-      DATABASE_URL: postgres://user:pass@postgres:5432/db
+      DATABASE_URL: postgres://user:pass@172.18.0.2:5432/db
     volumes: 
       - '../backend:/home/node/app:delegated'
-    command: 'npm run'
+    command: 'node app.js'
     container_name: 'backend'
