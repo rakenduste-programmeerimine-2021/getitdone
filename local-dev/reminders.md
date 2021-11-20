@@ -15,3 +15,8 @@
 
 ### table generation
 TODO
+
+## express
+
+### start outside of docker
+set DEBUG=backend:* & npm start 
