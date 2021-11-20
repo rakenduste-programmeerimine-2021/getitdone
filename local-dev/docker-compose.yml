@@ -8,7 +8,7 @@ services:
       - '3000:3000'
     volumes: 
       - '../frontend:/home/node/app:delegated'
-    command: 'run start'
+    command: run start
     container_name: 'frontend'
 
   db:
@@ -27,10 +27,10 @@ services:
     build:
       context: '../backend'
     ports: 
-      - '8081:3000'
+      - '8081:8081'
     environment:
       DATABASE_URL: postgres://user:pass@172.18.0.2:5432/db
     volumes: 
       - '../backend:/home/node/app:delegated'
-    command: 'node app.js'
+    command:  sh -c "npm install && node ./bin/www"
     container_name: 'backend'
