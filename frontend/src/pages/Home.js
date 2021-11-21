@@ -49,16 +49,19 @@ function Home() {
 
 
       <div>
+        <Task>
+
+        </Task>
+      </div>
+
+
+
+      <div>
         <EventCard>
 
         </EventCard>
       </div>
 
-      <div>
-        <Task>
-
-        </Task>
-      </div>
 
 
     </div>

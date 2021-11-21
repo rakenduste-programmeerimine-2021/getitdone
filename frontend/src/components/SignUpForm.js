@@ -17,12 +17,7 @@ function SignUpForm() {
 
   return (
     <Box
-      sx={{
-        marginTop: 8,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'left',
-      }}
+      sx={{ marginTop: 8 , marginLeft: 3}}
     >
       {/*<Grid container spacing={0} direction="column">*/}
       <Box sx={{ ml: 5, minWidth: '100px' }}>
