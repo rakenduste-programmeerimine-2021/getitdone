@@ -7,6 +7,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link as RouterLink, MemoryRouter as Router } from 'react-router-dom';
 import Task from '../components/Task'
+import EventCard from '../components/EventCard'
 
 function Home() {
   return (
@@ -46,11 +47,19 @@ function Home() {
         </Stack>
       </Box>
 
+
+      <div>
+        <EventCard>
+
+        </EventCard>
+      </div>
+
       <div>
         <Task>
 
         </Task>
       </div>
+
 
     </div>
   );
