@@ -99,7 +99,7 @@ function EventCard() {
                           </Grid>
                         </Grid>
                       </Paper>
-                      <Box sx={{ width: '70%', maxWidth: '200px', pt: '20px' }}>
+                      <Box sx={{ width: '70%', maxWidth: '130px', pt: '20px' }}>
                         <LinearProgress
                           variant="determinate"
                           value={TEMP_TasksProgress}

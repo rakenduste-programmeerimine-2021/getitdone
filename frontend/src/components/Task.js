@@ -22,6 +22,8 @@ import Avatar from '@mui/material/Avatar';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
+import CropDinIcon from '@mui/icons-material/CropDin';
+
 
 //TODO desc max character len
 //TODO kui lisada pilt, jagatakse disc ruum pooleks
@@ -44,13 +46,18 @@ function Task() {
   const TEMP_dateStr = '12.05.2022 20:53'
 
 
+  const toggleDone = (event) => {
+    //TODO endpoint
+    console.log('TEST')
+  }
+
   return (
 
     <Container sx={{ py: 10 }} maxWidth="md">
       <Grid container spacing={5} direction="column">
         {tasks.map((task) => (
           //TODO remove this container
-          <Grid item key={task} xs={12} sm={6} md={4}>
+          <Grid item key={task} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               {/*<CardActionArea>*/}
 
@@ -129,36 +136,28 @@ function Task() {
                     </Typography>
                   </Grid>
                 </Grid>
-
                 <Grid item  xs={1}>
                 </Grid>
-
                 <Grid item sx={{ minWidth: '70px', minHeight: '70px' }} md={2} xs={3}>
-                  <CardActionArea>
-                    <Paper sx={{ width: '100%', height: '100%' }} elevation={2} >
+                  {/*<CardActionArea onClick={toggleDone} >*/}
+                  <CardActionArea onClick={toggleDone} >
+                    <Paper elevation={2} >
                       <CheckCircleOutlineIcon
                         sx={{
                           width: '100%',
                           height: '100%',
+                          //visibility: 'hidden'
                         }}
                       />
                     </Paper>
                   </CardActionArea>
                 </Grid>
-                {/*<Grid container item sx={{ maxHeight: '45px' }} xs={8}>*/}
                 <Grid container item sx={{ maxHeight: '45px', maxWidth: '355px', minWidth: '355px' }} xs={8}>
                   <Grid item xs={6}>
-                  {/*<Grid item sx={{ width: '100%', height: '100%', minWidth: '70px' }} xs={6}>*/}
                     <Paper elevation={1} >
                       <Typography sx={{
-                        //display: "-webkit-box",
-                        //boxOrient: "vertical",
-                        //lineClamp: 2,
                         wordBreak: "keep-all",
-                        //overflow: "hidden",
-                        //maxHeight: '45px'
                         p: '6px',
-
                       }} variant="h6">
                         {TEMP_dateStr}
                       </Typography>
