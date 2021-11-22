@@ -1,5 +1,7 @@
 import { Context } from "../webapp";
+
 import React, { useContext, Component } from "react";
+
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
@@ -22,11 +24,13 @@ import Avatar from '@mui/material/Avatar';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
+
 import CropDinIcon from '@mui/icons-material/CropDin';
 
 
 //TODO desc max character len
 //TODO kui lisada pilt, jagatakse disc ruum pooleks
+
 
 
 
@@ -95,19 +99,24 @@ function Task() {
     tasks.push(TEST_task)
   }
 
+
   return (
 
     <Container sx={{ py: 10 }} maxWidth="md">
       <Grid container spacing={5} direction="column">
         {tasks.map((task) => (
+
           <Grid item key={task} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               <Grid container p={3}>
+
                 <Grid container item md={9} xs={8}>
                   <Grid item pr={2} pb={1} xs={9} >
                     <Paper sx={{ width: '100%', height: '100%', maxHeight: '45px', minWidth: '250px' }} elevation={2} >
                       <Typography align={'left'} sx={{ p: '6px' }} noWrap variant="h6" >
+
                         {task.name}
+
                       </Typography>
                     </Paper>
                   </Grid>
@@ -169,6 +178,7 @@ function Task() {
                       maxHeight: '25px',
                       overflow: "hidden",
                     }} gutterBottom variant="body2">
+
                       {task.details}
                     </Typography>
                   </Grid>
@@ -186,6 +196,7 @@ function Task() {
                         p: '6px',
                       }} variant="h6">
                         {task.deadline}
+
                       </Typography>
                     </Paper>
                   </Grid>
@@ -196,7 +207,9 @@ function Task() {
                   {/*<Grid item md={2} xs={1}>*/}
                   <Grid item xs={1}>
                     <Fab sx={{ width: '45px', height: '45px' }} color="secondary" aria-label="edit" >
+
                       <EditIcon/>
+
                     </Fab>
                   </Grid>
                   <Grid item xs={2}>

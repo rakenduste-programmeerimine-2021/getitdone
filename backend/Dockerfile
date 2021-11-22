@@ -12,7 +12,7 @@ COPY . $HOME/app
 RUN npm install && \
     npm cache clean --force
 
-ENTRYPOINT ["npm"]
+ENTRYPOINT [""]
 CMD ["start"]
 
 EXPOSE 3000

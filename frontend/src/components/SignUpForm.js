@@ -17,6 +17,7 @@ function SignUpForm() {
 
   return (
     <Box
+
       sx={{ marginTop: 8 , marginLeft: 3}}
     >
       {/*<Grid container spacing={0} direction="column">*/}
@@ -83,6 +84,7 @@ function SignUpForm() {
             sx={{ mr: 2, width: '25ch' }}
           />
         </div>
+
         <Button
           type="submit"
           fullWidth
@@ -94,13 +96,17 @@ function SignUpForm() {
         <Grid container>
           <Grid item>
             <Link component={RouterLink} to="/login" variant="body2">
+
               {/*{"Already have an account? Log In Here!"}*/}
               {"Log in instead"}
+
             </Link>
           </Grid>
         </Grid>
       </Box>
+
       {/*</Grid>*/}
+
     </Box>
     )
 }

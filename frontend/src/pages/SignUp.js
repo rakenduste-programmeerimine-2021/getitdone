@@ -2,11 +2,13 @@ import SignUpForm from '../components/SignUpForm';
 import Container from '@mui/material/Container';
 import { Grid } from '@mui/material';
 
+
 function SignUp() {
 
 
 
   return (
+
     <Grid
       container
       direction="column"
@@ -17,6 +19,7 @@ function SignUp() {
 
       </SignUpForm>
     </Grid>
+
     )
 }
 

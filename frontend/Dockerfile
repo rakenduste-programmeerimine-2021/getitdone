@@ -9,8 +9,8 @@ WORKDIR $HOME/app
 
 COPY . $HOME/app
 
-RUN npm install && \
-    npm cache clean --force
+#RUN npm install && \
+#   npm cache clean --force
 
 ENTRYPOINT ["npm"]
 CMD ["start"]

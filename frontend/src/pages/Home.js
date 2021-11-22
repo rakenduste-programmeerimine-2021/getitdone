@@ -9,6 +9,7 @@ import { Link as RouterLink, MemoryRouter as Router } from 'react-router-dom';
 import Task from '../components/Task'
 import EventCard from '../components/EventCard'
 
+
 function Home() {
   return (
     <div className="Home">
@@ -44,12 +45,12 @@ function Home() {
           <Button component={RouterLink} to="/signup">
             SignUp page
           </Button>
+
           <Button component={RouterLink} to="/taskpage">
             Task page
           </Button>
         </Stack>
       </Box>
-
 
       <div>
         <Task>
@@ -58,13 +59,11 @@ function Home() {
       </div>
 
 
-
       <div>
         <EventCard>
 
         </EventCard>
       </div>
-
 
 
     </div>
