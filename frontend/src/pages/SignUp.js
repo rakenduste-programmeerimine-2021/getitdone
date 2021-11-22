@@ -1,4 +1,7 @@
 import SignUpForm from '../components/SignUpForm';
+import Container from '@mui/material/Container';
+import { Grid } from '@mui/material';
+
 
 function SignUp() {
 
@@ -6,10 +9,17 @@ function SignUp() {
 
   return (
 
-    <SignUpForm>
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <SignUpForm>
 
-    </SignUpForm>
-    
+      </SignUpForm>
+    </Grid>
+
     )
 }
 

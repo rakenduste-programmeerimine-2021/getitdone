@@ -7,6 +7,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link as RouterLink, MemoryRouter as Router } from 'react-router-dom';
 import Task from '../components/Task'
+import EventCard from '../components/EventCard'
+
 
 function Home() {
   return (
@@ -43,6 +45,10 @@ function Home() {
           <Button component={RouterLink} to="/signup">
             SignUp page
           </Button>
+
+          <Button component={RouterLink} to="/taskpage">
+            Task page
+          </Button>
         </Stack>
       </Box>
 
@@ -51,6 +57,14 @@ function Home() {
 
         </Task>
       </div>
+
+
+      <div>
+        <EventCard>
+
+        </EventCard>
+      </div>
+
 
     </div>
   );
