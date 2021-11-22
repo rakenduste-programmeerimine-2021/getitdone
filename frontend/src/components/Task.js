@@ -1,5 +1,5 @@
 import { Context } from "../webapp";
-import { useContext } from "react";
+import React, { useContext, Component } from "react";
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
@@ -28,6 +28,52 @@ import CropDinIcon from '@mui/icons-material/CropDin';
 //TODO desc max character len
 //TODO kui lisada pilt, jagatakse disc ruum pooleks
 
+
+
+class TodoToggle extends Component {
+
+  state = {
+    toggleState: true,
+    visibilityState: ''
+    //TODO db hook
+  }
+
+  constructor(props) {
+    super(props);
+    this.child = React.createRef();
+  }
+
+  toggleDone() {
+    if (this.state.toggleState == true) {
+      this.setState({ toggleState: !this.state.toggleState })
+      this.state.visibilityState = 'hidden'
+      //TODO db hook
+    } else if (this.state.toggleState == false) {
+      this.setState({ toggleState: !this.state.toggleState })
+      this.state.visibilityState = ''
+      //TODO db hook
+    }
+  }
+
+  render() {
+    return (
+      <CardActionArea onClick={() => this.toggleDone()} >
+        <Paper elevation={2} >
+          <CheckCircleOutlineIcon
+            ref={this.child}
+            sx={{
+              width: '100%',
+              height: '100%',
+              visibility: this.state.visibilityState
+            }}
+          />
+        </Paper>
+      </CardActionArea>
+    );
+  }
+}
+
+
 function Task() {
 
   const [state, dispatch] = useContext(Context);
@@ -45,11 +91,6 @@ function Task() {
 
   const TEMP_dateStr = '12.05.2022 20:53'
 
-
-  const toggleDone = (event) => {
-    //TODO endpoint
-    console.log('TEST')
-  }
 
   return (
 
@@ -139,18 +180,7 @@ function Task() {
                 <Grid item  xs={1}>
                 </Grid>
                 <Grid item sx={{ minWidth: '70px', minHeight: '70px' }} md={2} xs={3}>
-                  {/*<CardActionArea onClick={toggleDone} >*/}
-                  <CardActionArea onClick={toggleDone} >
-                    <Paper elevation={2} >
-                      <CheckCircleOutlineIcon
-                        sx={{
-                          width: '100%',
-                          height: '100%',
-                          //visibility: 'hidden'
-                        }}
-                      />
-                    </Paper>
-                  </CardActionArea>
+                  <TodoToggle/>
                 </Grid>
                 <Grid container item sx={{ maxHeight: '45px', maxWidth: '355px', minWidth: '355px' }} xs={8}>
                   <Grid item xs={6}>
