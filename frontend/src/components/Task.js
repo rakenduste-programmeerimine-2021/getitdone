@@ -78,38 +78,36 @@ function Task() {
 
   const [state, dispatch] = useContext(Context);
 
-  const tasks = [1, 2, 3,];
 
-  //TODO max desc len
+  const tasks = [];
 
-  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the "
-  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+  const TEST_task = {
+    id: 'teasttaskid 123',
+    name: 'TASK NAME - eriti pikk task name',
+    deadline: '12.05.2022 20:53',
+    details: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    img_url: 'TODO',
+    completed_by: 'ARRAY?',
+    members: 'ARRAY?'
+  }
 
-
-  const TEMP_title = "Task Name - eriti pikk task name"
-
-  const TEMP_dateStr = '12.05.2022 20:53'
-
+  for (let i = 0; i < 4; i++) {
+    tasks.push(TEST_task)
+  }
 
   return (
 
     <Container sx={{ py: 10 }} maxWidth="md">
       <Grid container spacing={5} direction="column">
         {tasks.map((task) => (
-          //TODO remove this container
           <Grid item key={task} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
-              {/*<CardActionArea>*/}
-
-              {/*<Grid container rowSpacing={1} columnSpacing={3} >*/}
               <Grid container p={3}>
-
                 <Grid container item md={9} xs={8}>
                   <Grid item pr={2} pb={1} xs={9} >
                     <Paper sx={{ width: '100%', height: '100%', maxHeight: '45px', minWidth: '250px' }} elevation={2} >
                       <Typography align={'left'} sx={{ p: '6px' }} noWrap variant="h6" >
-                        {TEMP_title}
+                        {task.name}
                       </Typography>
                     </Paper>
                   </Grid>
@@ -165,15 +163,13 @@ function Task() {
                     </Paper>
                   </Grid>
                   <Grid item sx={{ width: '100%', height: '100%', pt: '7px', pb: '7px'}} xs={12}>
-                    {/*sx={{ width: '100%', height: '100%' }}*/}
-                    {/*<Typography noWrap sx={{ width: '100%', height: '100%', maxWidth: '600px' }} variant="body2">*/}
                     <Typography sx={{
                       width: '100%',
                       minHeight: '60px',
                       maxHeight: '25px',
                       overflow: "hidden",
                     }} gutterBottom variant="body2">
-                      {TEMP_desc}
+                      {task.details}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -189,7 +185,7 @@ function Task() {
                         wordBreak: "keep-all",
                         p: '6px',
                       }} variant="h6">
-                        {TEMP_dateStr}
+                        {task.deadline}
                       </Typography>
                     </Paper>
                   </Grid>
@@ -200,9 +196,7 @@ function Task() {
                   {/*<Grid item md={2} xs={1}>*/}
                   <Grid item xs={1}>
                     <Fab sx={{ width: '45px', height: '45px' }} color="secondary" aria-label="edit" >
-                      <EditIcon >
-                        
-                      </EditIcon>
+                      <EditIcon/>
                     </Fab>
                   </Grid>
                   <Grid item xs={2}>

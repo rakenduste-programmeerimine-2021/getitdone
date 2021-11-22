@@ -44,6 +44,9 @@ function Home() {
           <Button component={RouterLink} to="/signup">
             SignUp page
           </Button>
+          <Button component={RouterLink} to="/taskpage">
+            Task page
+          </Button>
         </Stack>
       </Box>
 
