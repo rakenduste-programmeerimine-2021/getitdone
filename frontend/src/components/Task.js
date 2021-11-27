@@ -82,30 +82,16 @@ function Task() {
 
   const [state, dispatch] = useContext(Context);
 
-
-  const tasks = [];
-
-  const TEST_task = {
-    id: 'teasttaskid 123',
-    name: 'TASK NAME - eriti pikk task name',
-    deadline: '12.05.2022 20:53',
-    details: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    img_url: 'TODO',
-    completed_by: 'ARRAY?',
-    members: 'ARRAY?'
-  }
-
-  for (let i = 0; i < 4; i++) {
-    tasks.push(TEST_task)
-  }
+  const tasks = state.tasks.data;
 
 
   return (
 
-    <Container sx={{ py: 10 }} maxWidth="md">
+    //<Container sx={{ py: 10 }} maxWidth="md">
+    //  <Grid container spacing={5} direction="column">
+    <Container>
       <Grid container spacing={5} direction="column">
         {tasks.map((task) => (
-
           <Grid item key={task} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               <Grid container p={3}>

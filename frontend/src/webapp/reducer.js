@@ -20,4 +20,12 @@ const authReducer = (state, action) => {
     }
 }
 
-export { authReducer }
+//TODO cleanup
+const taskReducer = (state, action) => {
+  switch (action.type) {
+    default:
+      return state
+  }
+}
+
+export { authReducer, taskReducer }
