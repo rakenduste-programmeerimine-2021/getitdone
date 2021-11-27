@@ -15,7 +15,7 @@ function Home() {
     <div className="Home">
       <Typography variant="h2">
         TEST GID
-      </Typography>;
+      </Typography>
       <Stack spacing={2} direction="row">
         <Button variant="text">Text</Button>
         <Button variant="contained">Contained</Button>
