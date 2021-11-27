@@ -1,17 +1,17 @@
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { Link as RouterLink, MemoryRouter as Router } from 'react-router-dom';
-import { Context } from "../webapp";
 import { useContext } from "react";
-import { loginUser, logoutUser } from "../webapp/actions";
+import { Link as RouterLink } from 'react-router-dom';
+import { Context } from "../webapp";
+//import { loginUser, logoutUser } from "../webapp/actions";
 
 
 //default MUI LogIn page, based on

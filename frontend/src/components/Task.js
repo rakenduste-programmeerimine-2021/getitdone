@@ -1,31 +1,18 @@
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import EditIcon from '@mui/icons-material/Edit';
+import Avatar from '@mui/material/Avatar';
+import CardActionArea from '@mui/material/CardActionArea';
+import Container from '@mui/material/Container';
+import Fab from '@mui/material/Fab';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import React, { Component, useContext } from "react";
+import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 
-import React, { useContext, Component } from "react";
 
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import CardActionArea from '@mui/material/CardActionArea';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import Avatar from '@mui/material/Avatar';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import Fab from '@mui/material/Fab';
 
-import CropDinIcon from '@mui/icons-material/CropDin';
 
 
 //TODO desc max character len
@@ -48,13 +35,13 @@ class TodoToggle extends Component {
   }
 
   toggleDone() {
-    if (this.state.toggleState == true) {
+    if (this.state.toggleState === true) {
       this.setState({ toggleState: !this.state.toggleState })
-      this.state.visibilityState = 'hidden'
+      this.setState({ visibilityState: 'hidden' })
       //TODO db hook
-    } else if (this.state.toggleState == false) {
+    } else if (this.state.toggleState === false) {
       this.setState({ toggleState: !this.state.toggleState })
-      this.state.visibilityState = ''
+      this.setState({ visibilityState: '' })
       //TODO db hook
     }
   }
@@ -77,36 +64,37 @@ class TodoToggle extends Component {
   }
 }
 
+//function handEditClick(id) {
+//  //const [state] = useContext(Context);
+//  console.log('HANDLE TEST')
+//  //console.log(state.tasks.openTask)
+//}
+
 
 function Task() {
 
   const [state, dispatch] = useContext(Context);
 
+  const tasks = state.tasks.data;
 
-  const tasks = [];
+  //const navigate = useNavigate();
 
-  const TEST_task = {
-    id: 'teasttaskid 123',
-    name: 'TASK NAME - eriti pikk task name',
-    deadline: '12.05.2022 20:53',
-    details: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    img_url: 'TODO',
-    completed_by: 'ARRAY?',
-    members: 'ARRAY?'
+  function handleEditClick(id) {
+    
+    //TODO clean this up
+    state.tasks.openTaskId = id
+    //console.log(this)
+
   }
-
-  for (let i = 0; i < 4; i++) {
-    tasks.push(TEST_task)
-  }
-
 
   return (
 
-    <Container sx={{ py: 10 }} maxWidth="md">
+    //<Container sx={{ py: 10 }} maxWidth="md">
+    //  <Grid container spacing={5} direction="column">
+    <Container>
       <Grid container spacing={5} direction="column">
         {tasks.map((task) => (
-
-          <Grid item key={task} xs={12} >
+          <Grid item key={task.id} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               <Grid container p={3}>
 
@@ -191,12 +179,12 @@ function Task() {
                 <Grid container item sx={{ maxHeight: '45px', maxWidth: '355px', minWidth: '355px' }} xs={8}>
                   <Grid item xs={6}>
                     <Paper elevation={1} >
+                      {/*TODO presentation - remove seconds*/}
                       <Typography sx={{
                         wordBreak: "keep-all",
                         p: '6px',
-                      }} variant="h6">
+                      }} variant="subtitle1">
                         {task.deadline}
-
                       </Typography>
                     </Paper>
                   </Grid>
@@ -206,7 +194,12 @@ function Task() {
                   </Grid>
                   {/*<Grid item md={2} xs={1}>*/}
                   <Grid item xs={1}>
-                    <Fab sx={{ width: '45px', height: '45px' }} color="secondary" aria-label="edit" >
+                    <Fab
+                      onClick={() => handleEditClick(task.id)}
+                      component={RouterLink} to="/taskdetails"
+                      sx={{ width: '45px', height: '45px' }}
+                      color="secondary"
+                      aria-label="edit" >
 
                       <EditIcon/>
 
