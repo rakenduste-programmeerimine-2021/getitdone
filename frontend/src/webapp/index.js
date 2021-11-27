@@ -14,7 +14,8 @@ function TEST_task() {
   return {
     id: '',
     name: 'TASK NAME - eriti pikk task name',
-    deadline: '12.05.2022 20:53',
+    //deadline: '12.05.2022 20:53',
+    deadline: '2014-08-18T21:11:54',
     details: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     img_url: 'TODO',
     completed_by: 'ARRAY?',
@@ -30,11 +31,30 @@ for (let i = 0; i < 4; i++) {
 }
 
 
+function emptyTask() {
+  return {
+    id: '',
+    name: '',
+    deadline: '',
+    details: '',
+    img_url: '',
+    completed_by: '',
+    members: ''
+  }
+}
+
+var emptyPlaceholder = emptyTask();
+
 const initialTasks = {
   //TODO data: [],
   data: TEST_tasks,
-  nrOfTasks: TEST_tasks.length  //TESTING
+  nrOfTasks: TEST_tasks.length,  //TESTING
+  openTaskId: null,  
+  openTaskObj: null,
+  emptyTask: emptyPlaceholder
 }
+
+
 
 const initialAuth = {
   token: null,

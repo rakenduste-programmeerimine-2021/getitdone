@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import React, { Component, useContext } from "react";
+import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 
 
@@ -63,6 +64,12 @@ class TodoToggle extends Component {
   }
 }
 
+//function handEditClick(id) {
+//  //const [state] = useContext(Context);
+//  console.log('HANDLE TEST')
+//  //console.log(state.tasks.openTask)
+//}
+
 
 function Task() {
 
@@ -70,6 +77,15 @@ function Task() {
 
   const tasks = state.tasks.data;
 
+  //const navigate = useNavigate();
+
+  function handleEditClick(id) {
+    
+    //TODO clean this up
+    state.tasks.openTaskId = id
+    //console.log(this)
+
+  }
 
   return (
 
@@ -163,12 +179,12 @@ function Task() {
                 <Grid container item sx={{ maxHeight: '45px', maxWidth: '355px', minWidth: '355px' }} xs={8}>
                   <Grid item xs={6}>
                     <Paper elevation={1} >
+                      {/*TODO presentation - remove seconds*/}
                       <Typography sx={{
                         wordBreak: "keep-all",
                         p: '6px',
-                      }} variant="h6">
+                      }} variant="subtitle1">
                         {task.deadline}
-
                       </Typography>
                     </Paper>
                   </Grid>
@@ -178,7 +194,12 @@ function Task() {
                   </Grid>
                   {/*<Grid item md={2} xs={1}>*/}
                   <Grid item xs={1}>
-                    <Fab sx={{ width: '45px', height: '45px' }} color="secondary" aria-label="edit" >
+                    <Fab
+                      onClick={() => handleEditClick(task.id)}
+                      component={RouterLink} to="/taskdetails"
+                      sx={{ width: '45px', height: '45px' }}
+                      color="secondary"
+                      aria-label="edit" >
 
                       <EditIcon/>
 
