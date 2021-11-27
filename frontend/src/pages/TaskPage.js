@@ -3,6 +3,7 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import React, { useContext } from "react";
+import { Link as RouterLink } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Task from '../components/Task';
 import { Context } from "../webapp";
@@ -34,7 +35,12 @@ function TaskPage() {
               <BackButton />
             </Grid>
             <Grid item xs={5}>
-              <Fab variant="extended" sx={{ width: '145px', height: '45px' }}  color="primary" aria-label="add">
+              <Fab
+                variant="extended"
+                component={RouterLink} to="/taskdetails"
+                sx={{ width: '145px', height: '45px' }}
+                color="primary"
+                aria-label="add">
                 <AddIcon sx={{ mr: 1 }} />
                 <Typography display="inline">Add Task</Typography>
               </Fab>
