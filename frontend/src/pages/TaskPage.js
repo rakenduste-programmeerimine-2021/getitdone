@@ -17,7 +17,11 @@ function TaskPage() {
   console.log('THIS >>')
   console.log(state)
 
-/*  const tasks = state.tasks.data;*/
+
+  function handleAddClick() {
+
+    state.tasks.openTaskId = null
+  }
 
 
   return (
@@ -37,6 +41,7 @@ function TaskPage() {
             <Grid item xs={5}>
               <Fab
                 variant="extended"
+                onClick={() => handleAddClick()}
                 component={RouterLink} to="/taskdetails"
                 sx={{ width: '145px', height: '45px' }}
                 color="primary"
