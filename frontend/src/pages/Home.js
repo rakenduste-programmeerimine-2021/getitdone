@@ -1,13 +1,13 @@
-import { Button, Typography, Stack } from '@mui/material';
-import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
-import { Link as RouterLink, MemoryRouter as Router } from 'react-router-dom';
-import Task from '../components/Task'
-import EventCard from '../components/EventCard'
+import { Button, Stack, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import { Link as RouterLink } from 'react-router-dom';
+import EventCard from '../components/EventCard';
+import Task from '../components/Task';
 
 
 function Home() {
@@ -45,9 +45,11 @@ function Home() {
           <Button component={RouterLink} to="/signup">
             SignUp page
           </Button>
-
           <Button component={RouterLink} to="/taskpage">
             Task page
+          </Button>
+          <Button component={RouterLink} to="/taskdetails">
+            Task DETAILS page
           </Button>
         </Stack>
       </Box>

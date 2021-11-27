@@ -1,13 +1,11 @@
 import AddIcon from '@mui/icons-material/Add';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import React, { useContext } from "react";
+import BackButton from '../components/BackButton';
 import Task from '../components/Task';
 import { Context } from "../webapp";
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-
 
 
 
@@ -33,9 +31,7 @@ function TaskPage() {
           {/*TODO refactor and finish backbutton*/}
           <Grid item container p={2}>
             <Grid item xs={5}>
-              <Fab sx={{ width: '45px', height: '45px' }} color="primary" aria-label="back" >
-                <ArrowBackIosNewIcon />
-              </Fab>
+              <BackButton />
             </Grid>
             <Grid item xs={5}>
               <Fab variant="extended" sx={{ width: '145px', height: '45px' }}  color="primary" aria-label="add">
@@ -51,7 +47,7 @@ function TaskPage() {
         <Grid container>
           {/*<Grid item xs={1} fullWidth/>*/}
           {/*</Grid>*/}
-          <Grid item xs={12} fullWidth>
+          <Grid item xs={12}>
             {/*<Container sx={{ py: 10 }} maxWidth="md">*/}
             {/*<Grid container spacing={5} direction="row">*/}
             <Task>

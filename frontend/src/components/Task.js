@@ -1,31 +1,17 @@
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import EditIcon from '@mui/icons-material/Edit';
+import Avatar from '@mui/material/Avatar';
+import CardActionArea from '@mui/material/CardActionArea';
+import Container from '@mui/material/Container';
+import Fab from '@mui/material/Fab';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import React, { Component, useContext } from "react";
 import { Context } from "../webapp";
 
-import React, { useContext, Component } from "react";
 
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import CardActionArea from '@mui/material/CardActionArea';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import Avatar from '@mui/material/Avatar';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import Fab from '@mui/material/Fab';
 
-import CropDinIcon from '@mui/icons-material/CropDin';
 
 
 //TODO desc max character len
@@ -48,13 +34,13 @@ class TodoToggle extends Component {
   }
 
   toggleDone() {
-    if (this.state.toggleState == true) {
+    if (this.state.toggleState === true) {
       this.setState({ toggleState: !this.state.toggleState })
-      this.state.visibilityState = 'hidden'
+      this.setState({ visibilityState: 'hidden' })
       //TODO db hook
-    } else if (this.state.toggleState == false) {
+    } else if (this.state.toggleState === false) {
       this.setState({ toggleState: !this.state.toggleState })
-      this.state.visibilityState = ''
+      this.setState({ visibilityState: '' })
       //TODO db hook
     }
   }
@@ -92,7 +78,7 @@ function Task() {
     <Container>
       <Grid container spacing={5} direction="column">
         {tasks.map((task) => (
-          <Grid item key={task} xs={12} >
+          <Grid item key={task.id} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               <Grid container p={3}>
 

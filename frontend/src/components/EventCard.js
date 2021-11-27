@@ -1,29 +1,13 @@
-import { Context } from "../webapp";
-import { useContext } from "react";
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import CardActionArea from '@mui/material/CardActionArea';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import Avatar from '@mui/material/Avatar';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import Fab from '@mui/material/Fab';
 import SettingsIcon from '@mui/icons-material/Settings';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import Container from '@mui/material/Container';
+import Fab from '@mui/material/Fab';
+import Grid from '@mui/material/Grid';
 import LinearProgress from '@mui/material/LinearProgress';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
 function EventCard() {
 
@@ -32,7 +16,7 @@ function EventCard() {
 
   //const TEMP_desc = "Lorem Ipsum is simply dummy text of the "
   //const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+/*  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."*/
 
 
   const TEMP_title = "EVENT - eriti pikk event name"
@@ -110,7 +94,7 @@ function EventCard() {
                   </Grid>
                 </Grid>
                 <Grid item xs={6} >
-                  <Grid container direction="column" alignItems="flex-end"  xs={12} >
+                  <Grid container direction="column" alignItems="flex-end" >
                     <Grid item xs={2} pb={2} sx={{ width: '45px', height: '45px' }} >
                       <Fab sx={{ width: '45px', height: '45px' }} color="secondary" aria-label="settings" >
                         <SettingsIcon>

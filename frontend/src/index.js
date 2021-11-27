@@ -1,13 +1,13 @@
+import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'typeface-roboto';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
-
-import 'typeface-roboto'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Webapp from './webapp';
 import theme from './webapp/theme';
+
 
 
 ReactDOM.render(
