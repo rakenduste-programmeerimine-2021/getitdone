@@ -1,18 +1,13 @@
 FROM node:14.17.5-alpine
-
-ENV HOME=/home/node
-
 USER node
 
-RUN mkdir -p $HOME/app
-WORKDIR $HOME/app
+# Install dependencies so that we could cache
+WORKDIR /home/node/
+COPY package.json /home/node/
+RUN ls && npm install
+COPY ./src ./src
 
-COPY . $HOME/app
-
-RUN npm install && \
-    npm cache clean --force
-
-ENTRYPOINT [""]
-CMD ["start"]
-
+# Start
 EXPOSE 3000
+ENTRYPOINT ["npm"]
+CMD ["start"]

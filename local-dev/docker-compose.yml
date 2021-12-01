@@ -1,37 +1,41 @@
-version: '3.4'
+version: "3.4"
 
-services: 
+services:
   frontend-react:
     build:
-      context: '../frontend'
-    ports: 
-      - '3000:3000'
-    volumes: 
-      - '../frontend:/home/node/app:delegated'
-    command: run start
-    container_name: 'frontend'
+      context: "../frontend"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "../frontend/public/:/home/node/public:delegated"
+      - "../frontend/src/:/home/node/src:delegated"
+    container_name: "frontend"
 
-  db:
-    image: postgres
+  backend-db:
+    image: "postgres:alpine"
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: getitdone
     ports:
-      - '5432:5432'
-    container_name: db
-
+      - "5432:5432"
+    volumes:
+      - ./pg-init.sql:/docker-entrypoint-initdb.d/pg-init.sql
+      - pgdata:/var/lib/postgresql/data
+    container_name: backend-db
 
   backend:
-    depends_on: 
-      - db
+    depends_on:
+      - backend-db
     build:
-      context: '../backend'
-    ports: 
-      - '8081:8081'
+      context: "../backend"
+    ports:
+      - "8080:3000"
     environment:
-      DATABASE_URL: postgres://user:pass@172.18.0.2:5432/db
-    volumes: 
-      - '../backend:/home/node/app:delegated'
-    command:  sh -c "npm install && node ./bin/www"
-    container_name: 'backend'
+      DATABASE_URL: postgres://user:pass@backend-db:5432/db
+    volumes:
+      - "../backend/src:/home/node/src:delegated"
+    container_name: "backend"
+
+volumes:
+  pgdata:
