@@ -2,12 +2,12 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import produce from "immer";
 import React, { useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Task from '../components/Task';
 import { Context } from "../webapp";
-
 
 
 function TaskPage() {
@@ -18,9 +18,12 @@ function TaskPage() {
   console.log(state)
 
 
-  function handleAddClick() {
-
-    state.tasks.openTaskId = null
+  const handleAddClick = () => {
+    setState(
+      produce((draft) => {
+        draft.tasks.openTaskId = null
+      })
+    );
   }
 
 

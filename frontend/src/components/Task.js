@@ -7,11 +7,10 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import React, { Component, useContext, useState, useCallback  } from "react";
+import produce from "immer";
+import React, { Component, useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
-import { enableAllPlugins } from "immer"
-import produce from "immer";
 
 
 
@@ -74,8 +73,7 @@ function Task() {
   const handleEditClick = (id) => {
     setState(
       produce((draft) => {
-        console.log('DRAFTSTATE')
-        console.log(draft.tasks.openTaskId = id)
+        draft.tasks.openTaskId = id
       })
     );
   }
