@@ -70,6 +70,14 @@ function Task() {
 
   const [state, setState] = useContext(Context);
 
+  //const getTasks = () => {
+  //  setState(
+  //    produce((draft) => {
+  //      draft.tasks = []
+  //    })
+  //  );
+  //}
+
   const handleEditClick = (id) => {
     setState(
       produce((draft) => {

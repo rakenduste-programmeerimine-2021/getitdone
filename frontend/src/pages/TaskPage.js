@@ -14,8 +14,6 @@ function TaskPage() {
 
   const [state, setState] = useContext(Context);
 
-  console.log('THIS >>')
-  console.log(state)
 
 
   const handleAddClick = () => {
