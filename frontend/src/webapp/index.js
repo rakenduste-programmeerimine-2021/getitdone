@@ -44,7 +44,8 @@ var emptyPlaceholder = emptyTask();
 
 const initialTasks = {
   //TODO data: [],
-  data: TEST_tasks,
+  //data: TEST_tasks,
+  data: [],
   nrOfTasks: TEST_tasks.length,  //TESTING
   openTaskId: null,  
   openTaskObj: null,
@@ -64,6 +65,8 @@ const initialState = ({
 })
 
 export const Context = createContext()
+
+
 
 function Webapp({ children }) {
 

@@ -71,19 +71,19 @@ function Task() {
 
   const [state, setState] = useContext(Context);
 
-  useEffect(() => {
-    axios.get('http://localhost:3003/tasks').then(resp => {
-      setTasks(resp)
-    });
-  }, []);
+  //useEffect(() => {
+  //  axios.get('http://localhost:3003/tasks').then(resp => {
+  //    setTasks(resp)
+  //  });
+  //}, []);
 
-  const setTasks = (data) => {
-    setState(
-      produce((draft) => {
-        draft.tasks = data
-      })
-    );
-  }
+  //const setTasks = (data) => {
+  //  setState(
+  //    produce((draft) => {
+  //      draft.tasks = data
+  //    })
+  //  );
+  //}
 
 
   const handleEditClick = (id) => {

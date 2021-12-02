@@ -11,7 +11,8 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
-import React, { useContext } from "react";
+import produce from "immer";
+import React, { useContext, useEffect, useState } from "react";
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
 
@@ -20,24 +21,41 @@ import { Context } from "../webapp";
 function TaskDetails() {
 
   const [state, setState] = useContext(Context);
-
+  console.log('TASKDETAILS ?? STATE')
+  console.log(state)
   //TODO fix task find
 
   const handleChange = (newValue) => {
     setValue(newValue);
   };
 
-  var taskData = {};
-/*  const [value, setValue] = React.useState(new Date());*/
-  if (state.tasks.openTaskId != null) {
-    taskData = state.tasks.data.filter(item => {
-      return item.id === state.tasks.openTaskId
-    })
-    taskData = taskData[0]
-  } else {
-    taskData = state.tasks.emptyTask
 
-  }
+  //var taskData = state.tasks.emptyTask;
+  //if (state.tasks.openTaskId != null) {
+  //  taskData = state.tasks.data.filter(item => {
+  //    return item.id === state.tasks.openTaskId
+  //  })
+  //  taskData = taskData[0]
+  //}
+  //var taskData = [];
+  const [taskData, setData]= useState([]);
+
+  useEffect(() => {
+    console.log('TASKDETAILS ?? STATE >>')
+    //console.log(state.tasks.openTaskId)
+    //console.log(state.tasks.data)
+    if (state.tasks.openTaskId != null) {
+      var taskDataPre = state.tasks.data.find(item => {
+        return item.id === state.tasks.openTaskId
+      })
+      setData(taskDataPre)
+
+      console.log('Succ')
+      console.log(taskData)
+      console.log(state)
+
+    } 
+  }, []);
 
   const [value, setValue] = React.useState(taskData.deadline);
 

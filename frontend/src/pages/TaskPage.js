@@ -2,8 +2,9 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 import produce from "immer";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Task from '../components/Task';
@@ -15,6 +16,19 @@ function TaskPage() {
   const [state, setState] = useContext(Context);
 
 
+  useEffect(() => {
+    axios.get('http://localhost:3003/tasks').then(resp => {
+      setTasks(resp)
+    });
+  }, []);
+
+  const setTasks = (data) => {
+    setState(
+      produce((draft) => {
+        draft.tasks = data
+      })
+    );
+  }
 
   const handleAddClick = () => {
     setState(
