@@ -36,7 +36,8 @@ function TaskDetails() {
     taskData = taskData[0]
   } else {
     taskData = state.tasks.emptyTask
-    taskData.deadline = new Date()
+    //TODO FIX THIS
+    //taskData.deadline = new Date()
   }
 
   const [value, setValue] = React.useState(taskData.deadline);

@@ -32,7 +32,7 @@ function emptyTask() {
   return {
     id: '',
     name: '',
-    deadline: '',
+    deadline: new Date(),
     details: '',
     img_url: '',
     completed_by: '',
@@ -63,7 +63,7 @@ const initialState = ({
   auth: initialAuth,
 })
 
-export const Context = createContext(initialState)
+export const Context = createContext()
 
 function Webapp({ children }) {
 

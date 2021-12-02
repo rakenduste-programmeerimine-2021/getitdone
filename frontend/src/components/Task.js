@@ -7,9 +7,11 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useState, useCallback  } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
+import { enableAllPlugins } from "immer"
+import produce from "immer";
 
 
 
@@ -64,49 +66,19 @@ class TodoToggle extends Component {
   }
 }
 
-//function handEditClick(id) {
-//  //const [state] = useContext(Context);
-//  console.log('HANDLE TEST')
-//  //console.log(state.tasks.openTask)
-//}
-
 
 function Task() {
 
   const [state, setState] = useContext(Context);
 
-  //const tasks = state.tasks.data;
-
-  //const navigate = useNavigate();
-
-  console.log(state)
-
-  //state.tasks.openTaskId.setState(0)
-
-  //function handleEditClick(id) {
-    
-  //  //TODO clean this up
-  //  state.tasks.openTaskId = id
-  //  //setState()
-
-
-  //  //setState()
-  //  //console.log(this)
-
-  //}
-
   const handleEditClick = (id) => {
-
-    //TODO clean this up
-    state.tasks.openTaskId = id
-    //setState()
-    //this.setState(state.tasks.openTaskId = id)
-
-    //setState()
-    //console.log(this)
-
+    setState(
+      produce((draft) => {
+        console.log('DRAFTSTATE')
+        console.log(draft.tasks.openTaskId = id)
+      })
+    );
   }
-
 
   return (
 
