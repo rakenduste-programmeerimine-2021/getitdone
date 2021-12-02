@@ -19,7 +19,7 @@ import { Context } from "../webapp";
 
 function TaskDetails() {
 
-  const [state, dispatch] = useContext(Context);
+  const [state, setState] = useContext(Context);
 
   //TODO fix task find
 

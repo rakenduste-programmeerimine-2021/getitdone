@@ -12,7 +12,7 @@ import { Context } from "../webapp";
 
 function TaskPage() {
 
-  const [state, dispatch] = useContext(Context);
+  const [state, setState] = useContext(Context);
 
   console.log('THIS >>')
   console.log(state)

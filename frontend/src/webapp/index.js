@@ -1,8 +1,5 @@
-import { createContext, useReducer } from "react";
-import { authReducer, taskReducer } from "./reducer";
-import combineReducers from "react-combine-reducers";
+import React, { createContext, useState } from 'react';
 import nextId from "react-id-generator";
-import React, { useState } from 'react';
 
 //TODO testing data
 
@@ -69,7 +66,6 @@ const initialState = ({
 export const Context = createContext(initialState)
 
 function Webapp({ children }) {
-  //const [state, dispatch] = useReducer(combinedReducer, initialState)
 
   const [state, setState] = useState(initialState);
 
