@@ -21,53 +21,27 @@ import { Context } from "../webapp";
 function TaskDetails() {
 
   const [state, setState] = useContext(Context);
-  console.log('TASKDETAILS ?? STATE')
-  console.log(state)
-  //TODO fix task find
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
+  const handleTimeChange = (newValue) => {
+    setTimeValue(newValue);
   };
 
-
-  //var taskData = state.tasks.emptyTask;
-  //if (state.tasks.openTaskId != null) {
-  //  taskData = state.tasks.data.filter(item => {
-  //    return item.id === state.tasks.openTaskId
-  //  })
-  //  taskData = taskData[0]
-  //}
-  //var taskData = [];
-  const [taskData, setData]= useState([]);
+  const [taskData, setData] = useState([]);
+  const [timeValue, setTimeValue] = React.useState();
 
   useEffect(() => {
-    console.log('TASKDETAILS ?? STATE >>')
-    //console.log(state.tasks.openTaskId)
-    //console.log(state.tasks.data)
     if (state.tasks.openTaskId != null) {
       var taskDataPre = state.tasks.data.find(item => {
         return item.id === state.tasks.openTaskId
       })
       setData(taskDataPre)
-
-      console.log('Succ')
-      console.log(taskData)
-      console.log(state)
-
+      setTimeValue(taskDataPre.deadline)
     } 
   }, []);
-
-  const [value, setValue] = React.useState(taskData.deadline);
-
-
-  console.log('Task Data >>')
-  console.log(taskData)
-
 
   const Input = styled('input')({
     display: 'none',
   });
-
 
   return (
     <>
@@ -89,18 +63,21 @@ function TaskDetails() {
             </Grid>
           </Grid>
           <Grid item component="form" noValidate xs={10}>
+            {/*TODO fix multiline hack here*/}
             <Stack spacing={2} p={7}>
               <TextField
                 id="outlined-helperText"
                 label="Task Name"
+                multiline
+                rows={1}
                 defaultValue={taskData.name}
                 helperText="Some important text"
               />
 
               <DateTimePicker
                 label="Date&Time picker"
-                value={value}
-                onChange={handleChange}
+                value={timeValue}
+                onChange={handleTimeChange}
                 renderInput={(params) => <TextField {...params} />}
               />
 
