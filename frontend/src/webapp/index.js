@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import { authReducer, taskReducer } from "./reducer";
 import combineReducers from "react-combine-reducers";
 import nextId from "react-id-generator";
-
+import React, { useState } from 'react';
 
 //TODO testing data
 
@@ -61,18 +61,20 @@ const initialAuth = {
   user: null
 }
 
-const [combinedReducer, initialState] = combineReducers({
-  tasks: [taskReducer, initialTasks],
-  auth: [authReducer, initialAuth],
+const initialState = ({
+  tasks: initialTasks,
+  auth: initialAuth,
 })
 
 export const Context = createContext(initialState)
 
 function Webapp({ children }) {
-  const [state, dispatch] = useReducer(combinedReducer, initialState)
+  //const [state, dispatch] = useReducer(combinedReducer, initialState)
+
+  const [state, setState] = useState(initialState);
 
   return (
-    <Context.Provider value={[state, dispatch]}>
+    <Context.Provider value={[state, setState]}>
       {children}
     </Context.Provider>
   )

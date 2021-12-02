@@ -73,19 +73,40 @@ class TodoToggle extends Component {
 
 function Task() {
 
-  const [state, dispatch] = useContext(Context);
+  const [state, setState] = useContext(Context);
 
-  const tasks = state.tasks.data;
+  //const tasks = state.tasks.data;
 
   //const navigate = useNavigate();
 
-  function handleEditClick(id) {
+  console.log(state)
+
+  //state.tasks.openTaskId.setState(0)
+
+  //function handleEditClick(id) {
     
+  //  //TODO clean this up
+  //  state.tasks.openTaskId = id
+  //  //setState()
+
+
+  //  //setState()
+  //  //console.log(this)
+
+  //}
+
+  const handleEditClick = (id) => {
+
     //TODO clean this up
     state.tasks.openTaskId = id
+    //setState()
+    //this.setState(state.tasks.openTaskId = id)
+
+    //setState()
     //console.log(this)
 
   }
+
 
   return (
 
@@ -93,7 +114,7 @@ function Task() {
     //  <Grid container spacing={5} direction="column">
     <Container>
       <Grid container spacing={5} direction="column">
-        {tasks.map((task) => (
+        {state.tasks.data.map((task) => (
           <Grid item key={task.id} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               <Grid container p={3}>
