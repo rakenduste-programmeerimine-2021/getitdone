@@ -42,13 +42,13 @@ function emptyTask() {
 //TODO fix this 
 function emptyEvent() {
   return {
-    id: '',
-    name: '',
-    deadline: new Date(),
-    details: '',
-    img_url: '',
-    completed_by: '',
-    members: ''
+    event_i: '',
+    event_name: "TEST EVENT 1",
+    event_img_url: "https://source.unsplash.com/random",
+    event_details: "Lorem Ipsum is simply dummy text of the printing ",
+    event_members: "ARRAY?",
+    event_tasks: "ARRAY?",
+    event_next_deadline: "2014-08-18T21:11:54"
   }
 }
 

@@ -25,7 +25,7 @@ function EventCard() {
 
   //const actionAreaEnabled = false;
   //setActionAreaEnabled(true)
-  console.log(actionAreaEnabled)
+  //console.log(actionAreaEnabled)
 
   const handleEditClick = (id) => {
     //setActionAreaEnabled(false)
@@ -69,8 +69,6 @@ function EventCard() {
         draft.events.openEventId = id
       })
     );
-    console.log('EVENT CLICK')
-    console.log(state.events.openEventId)
     //TODO fix task target async
   
     //navigate('/taskpage')
