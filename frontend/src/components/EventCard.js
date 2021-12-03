@@ -35,10 +35,10 @@ function EventCard() {
         draft.events.openEventId = id
       })
     );
-    if (actionAreaEnabled === false) {
-      actionAreaEnabled = true;
-      navigate('/eventdetails')
-    }
+    //if (actionAreaEnabled === false) {
+    //  actionAreaEnabled = true;
+    //  navigate('/eventdetails')
+    //}
     
   }
 
