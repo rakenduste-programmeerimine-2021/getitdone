@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/frontend/TESTING_TEMP_API/json-mock-api/node_modules
 
 # testing
 /coverage

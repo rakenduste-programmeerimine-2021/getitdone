@@ -1,8 +1,5 @@
-import { createContext, useReducer } from "react";
-import { authReducer, taskReducer } from "./reducer";
-import combineReducers from "react-combine-reducers";
+import React, { createContext, useState } from 'react';
 import nextId from "react-id-generator";
-
 
 //TODO testing data
 
@@ -35,44 +32,67 @@ function emptyTask() {
   return {
     id: '',
     name: '',
-    deadline: '',
+    deadline: new Date(),
     details: '',
     img_url: '',
     completed_by: '',
     members: ''
   }
 }
+//TODO fix this 
+function emptyEvent() {
+  return {
+    event_i: '',
+    event_name: "TEST EVENT 1",
+    event_img_url: "https://source.unsplash.com/random",
+    event_details: "Lorem Ipsum is simply dummy text of the printing ",
+    event_members: "ARRAY?",
+    event_tasks: "ARRAY?",
+    event_next_deadline: "2014-08-18T21:11:54"
+  }
+}
 
-var emptyPlaceholder = emptyTask();
+var emptyTaskPlaceholder = emptyTask();
+var emptyEventPlaceholder = emptyEvent();
 
 const initialTasks = {
   //TODO data: [],
-  data: TEST_tasks,
+  //data: TEST_tasks,
+  data: [],
   nrOfTasks: TEST_tasks.length,  //TESTING
   openTaskId: null,  
   openTaskObj: null,
-  emptyTask: emptyPlaceholder
+  emptyTask: emptyTaskPlaceholder
 }
 
-
+const initialEvents = {
+  data: [],
+  openEventId: null,
+  openEventObj: null,
+  emptyEvent: emptyEventPlaceholder
+}
 
 const initialAuth = {
   token: null,
   user: null
 }
 
-const [combinedReducer, initialState] = combineReducers({
-  tasks: [taskReducer, initialTasks],
-  auth: [authReducer, initialAuth],
+const initialState = ({
+  events: initialEvents,
+  tasks: initialTasks,
+  auth: initialAuth,
 })
 
-export const Context = createContext(initialState)
+export const Context = createContext()
+
+
 
 function Webapp({ children }) {
-  const [state, dispatch] = useReducer(combinedReducer, initialState)
+
+  const [state, setState] = useState(initialState);
 
   return (
-    <Context.Provider value={[state, dispatch]}>
+    <Context.Provider value={[state, setState]}>
       {children}
     </Context.Provider>
   )

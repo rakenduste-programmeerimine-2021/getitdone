@@ -7,33 +7,28 @@ import produce from "immer";
 import React, { useContext, useEffect } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import BackButton from '../components/BackButton';
-import Task from '../components/Task';
+import EventCard from '../components/EventCard';
 import { Context } from "../webapp";
 
 
-function TaskPage() {
+function EventPage() {
 
   const [state, setState] = useContext(Context);
 
-  //const setTasks = (data) => {
-  //  setState(
-  //    produce((draft) => {
-  //      draft.tasks = data
-  //    })
-  //  );
-  //}
+
+  //TODO fix double get
+  console.log(state)
 
   useEffect(() => {
-    axios.get('http://localhost:3003/tasks').then(resp => {
-      //setTasks(resp)
-      const setTasks = (data) => {
+    axios.get('http://localhost:3003/events').then(resp => {
+      const setEvents = (data) => {
         setState(
           produce((draft) => {
-            draft.tasks = data
+            draft.events = data
           })
         );
       }
-      setTasks(resp)
+      setEvents(resp)
     });
   }, [setState]);
 
@@ -42,7 +37,7 @@ function TaskPage() {
   const handleAddClick = () => {
     setState(
       produce((draft) => {
-        draft.tasks.openTaskId = null
+        draft.events.openEventId = null
       })
     );
   }
@@ -63,37 +58,30 @@ function TaskPage() {
               <BackButton />
             </Grid>
             <Grid item xs={5}>
+              {/*TODO bind to element*/}
               <Fab
                 variant="extended"
                 onClick={() => handleAddClick()}
-                component={RouterLink} to="/taskdetails"
+                component={RouterLink} to="/eventdetails"
                 sx={{ width: '145px', height: '45px' }}
                 color="primary"
                 aria-label="add">
                 <AddIcon sx={{ mr: 1 }} />
-                <Typography display="inline">Add Task</Typography>
+                <Typography display="inline">Addevent</Typography>
               </Fab>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
       <Grid item pt={8} pb={8} xs={10}>
-        {/*TODO back to top button*/}
         <Grid container>
-          {/*<Grid item xs={1} fullWidth/>*/}
-          {/*</Grid>*/}
           <Grid item xs={12}>
-            {/*<Container sx={{ py: 10 }} maxWidth="md">*/}
-            {/*<Grid container spacing={5} direction="row">*/}
-            <Task>
-            </Task>
-            {/*</Grid>*/}
-            {/*</Container>*/}
+            <EventCard>
+            </EventCard>
           </Grid>
-{/*          <Grid item xs={1} fullWidth/>*/}
         </Grid>
       </Grid>
     </Grid>
   );
 }
-export default TaskPage;
+export default EventPage;
