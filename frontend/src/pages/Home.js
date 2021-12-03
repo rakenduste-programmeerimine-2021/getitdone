@@ -48,6 +48,9 @@ function Home() {
           <Button component={RouterLink} to="/taskdetails">
             Task DETAILS page
           </Button>
+          <Button component={RouterLink} to="/eventdetails">
+            Event DETAILS page
+          </Button>
           <Button component={RouterLink} to="/taskpage">
             Task page
           </Button>

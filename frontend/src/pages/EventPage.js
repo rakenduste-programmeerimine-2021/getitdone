@@ -59,7 +59,7 @@ function EventPage() {
               <Fab
                 variant="extended"
                 onClick={() => handleAddClick()}
-                component={RouterLink} to="/taskdetails"
+                component={RouterLink} to="/eventdetails"
                 sx={{ width: '145px', height: '45px' }}
                 color="primary"
                 aria-label="add">
