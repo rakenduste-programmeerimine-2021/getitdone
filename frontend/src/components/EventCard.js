@@ -42,7 +42,7 @@ function EventCard() {
   const TEMP_TasksToDo = '300'
   const TEMP_TasksProgress = 100 * (TEMP_TasksDone / TEMP_TasksToDo)
 
-  console.log(state.events)
+  //console.log(state.events)
 
   return (
 
