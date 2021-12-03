@@ -1,5 +1,3 @@
-
- - sellega lisab uuid andmetüübi
 CREATE EXTENSION "uuid-ossp";
 
 CREATE TABLE users (
