@@ -35,31 +35,7 @@ function EventCard() {
         draft.events.openEventId = id
       })
     );
-    //if (actionAreaEnabled === false) {
-    //  actionAreaEnabled = true;
-    //  navigate('/eventdetails')
-    //}
-    
   }
-
-  ////TODO sep this
-  //const handleEventClick = (id) => {
-  //  setState(
-  //    produce((draft) => {
-  //      draft.events.openEventId = id
-  //    })
-  //  );
-  //  console.log('EVENT CLICK')
-  //  console.log(state.events.openEventId)
-  //}
-
-
-  //////https://stackoverflow.com/questions/34687091/can-i-execute-a-function-after-setstate-is-finished-updating
-  //////this.setState({
-  //////  someState: obj
-  //////}, () => {
-  //////  this.afterSetStateFinished();
-  //////});
 
 
   //TODO sep this
@@ -70,9 +46,6 @@ function EventCard() {
       })
     );
     //TODO fix task target async
-  
-    //navigate('/taskpage')
-
     if (actionAreaEnabled === true) {
       navigate('/taskpage')
     }
@@ -90,8 +63,8 @@ function EventCard() {
         {state.events.data.map((evnt) => (
           <Grid item key={evnt.event_id} xs={12}>
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
-              {/*<CardActionArea onClick={() => handleEventClick(evnt.event_id)}  >*/}
-              <CardActionArea>
+              <CardActionArea onClick={() => handleEventClick(evnt.event_id)}  >
+              {/*<CardActionArea>*/}
                 <Grid container p={3} direction="row">
                 <Grid item xs={6} >
                   <Grid container direction="column">
