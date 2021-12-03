@@ -8,40 +8,56 @@ import Grid from '@mui/material/Grid';
 import LinearProgress from '@mui/material/LinearProgress';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import produce from "immer";
+import React, { useContext } from "react";
+import { Link as RouterLink } from 'react-router-dom';
+import { Context } from "../webapp";
 
 function EventCard() {
 
-  const events = [1, 2, 3,];
+  const [state, setState] = useContext(Context);
+
+  const handleEditClick = (id) => {
+    setState(
+      produce((draft) => {
+        draft.events.openEventId = id
+      })
+    );
+  }
 
 
-  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the "
-  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-/*  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."*/
+
+  //const events = [1, 2, 3,];
 
 
-  const TEMP_title = "EVENT - eriti pikk event name"
+//  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the "
+//  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+///*  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."*/
 
-  const TEMP_nextDeadline = '12.05.2022 20:53'
+
+//  const TEMP_title = "EVENT - eriti pikk event name"
+
+//  const TEMP_nextDeadline = '12.05.2022 20:53'
   const TEMP_TasksDone = '100'
   const TEMP_TasksToDo = '300'
   const TEMP_TasksProgress = 100 * (TEMP_TasksDone / TEMP_TasksToDo)
 
-
+  console.log(state.events)
 
   return (
 
     <Container sx={{ py: 10}} maxWidth="md">
       <Grid container spacing={5} direction="column">
-        {events.map((evnt) => (
-          <Grid item key={evnt}>
+        {state.events.data.map((evnt) => (
+          <Grid item key={evnt.event_id} xs={12}>
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               <Grid container p={3} direction="row">
                 <Grid item xs={6} >
                   <Grid container direction="column">
                     <Grid item sx={{ minWidth: '280px' }} xs={2} >
-                      <Paper sx={{ maxHeight: '45px', borderRadius: '21px' }} elevation={2} >
+                      <Paper sx={{ maxHeight: '45px', borderRadius: '5px' }} elevation={2} >
                         <Typography align={'left'} sx={{ p: '6px' }} variant="h6" >
-                          {TEMP_title}
+                          {evnt.event_name}
                         </Typography>
                       </Paper>
                     </Grid>
@@ -53,8 +69,8 @@ function EventCard() {
                     {/*<Grid item sx={{ minWidth: '280px' }} xs={2} >*/}
                     <Grid item sx={{ minWidth: '250px' }} xs={2} >
                       <Paper sx={{ maxHeight: '40px', maxWidth: '170px' }} elevation={2} >
-                        <Typography align={'left'} sx={{ p: '1px', wordBreak: "keep-all" }} variant="h6" >
-                          {TEMP_nextDeadline}
+                        <Typography align={'left'} sx={{ p: '1px', wordBreak: "keep-all" }} variant="subtitle1" >
+                          {evnt.event_next_deadline}
                         </Typography>
                       </Paper>
                     </Grid>
@@ -96,7 +112,12 @@ function EventCard() {
                 <Grid item xs={6} >
                   <Grid container direction="column" alignItems="flex-end" >
                     <Grid item xs={2} pb={2} sx={{ width: '45px', height: '45px' }} >
-                      <Fab sx={{ width: '45px', height: '45px' }} color="secondary" aria-label="settings" >
+                      <Fab
+                        onClick={() => handleEditClick(evnt.event_id)}
+                        component={RouterLink} to="/eventdetails"
+                        sx={{ width: '45px', height: '45px' }}
+                        color="secondary"
+                        aria-label="settings" >
                         <SettingsIcon>
                         </SettingsIcon>
                       </Fab>
@@ -109,7 +130,7 @@ function EventCard() {
                           alt="event image"
                           height="120px"
                           width="220px"
-                          image="https://source.unsplash.com/random"
+                          image={evnt.event_img_url}
                           sx={{ width: '100%', height: '100%', maxWidth: '410px', maxHeight: '200px' }}
                         />
                       </Card>

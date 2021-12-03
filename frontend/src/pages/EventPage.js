@@ -15,26 +15,29 @@ function EventPage() {
 
   const [state, setState] = useContext(Context);
 
-  //useEffect(() => {
-  //  axios.get('http://localhost:3003/tasks').then(resp => {
-  //    //setTasks(resp)
-  //    const setTasks = (data) => {
-  //      setState(
-  //        produce((draft) => {
-  //          draft.tasks = data
-  //        })
-  //      );
-  //    }
-  //    setTasks(resp)
-  //  });
-  //}, [setState]);
+
+  //TODO fix double get
+  console.log(state)
+
+  useEffect(() => {
+    axios.get('http://localhost:3003/events').then(resp => {
+      const setEvents = (data) => {
+        setState(
+          produce((draft) => {
+            draft.events = data
+          })
+        );
+      }
+      setEvents(resp)
+    });
+  }, [setState]);
 
 
 
   const handleAddClick = () => {
     setState(
       produce((draft) => {
-        draft.tasks.openTaskId = null
+        draft.events.openEventId = null
       })
     );
   }

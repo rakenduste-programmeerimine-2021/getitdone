@@ -39,7 +39,7 @@ function emptyTask() {
     members: ''
   }
 }
-
+//TODO fix this 
 function emptyEvent() {
   return {
     id: '',
@@ -67,9 +67,9 @@ const initialTasks = {
 
 const initialEvents = {
   data: [],
-  openTaskId: null,
-  openTaskObj: null,
-  emptyTask: emptyEventPlaceholder
+  openEventId: null,
+  openEventObj: null,
+  emptyEvent: emptyEventPlaceholder
 }
 
 const initialAuth = {
