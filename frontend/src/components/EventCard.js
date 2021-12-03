@@ -9,40 +9,81 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import produce from "immer";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
+import CardActionArea from '@mui/material/CardActionArea';
+import { useNavigate } from 'react-router-dom';
 
 function EventCard() {
 
+
   const [state, setState] = useContext(Context);
+  const navigate = useNavigate();
+  //const [actionAreaEnabled, setActionAreaEnabled] = useState(true);
+  var actionAreaEnabled = true;
+
+  //const actionAreaEnabled = false;
+  //setActionAreaEnabled(true)
+  console.log(actionAreaEnabled)
 
   const handleEditClick = (id) => {
+    //setActionAreaEnabled(false)
+    actionAreaEnabled = false;
     setState(
       produce((draft) => {
         draft.events.openEventId = id
       })
     );
+    if (actionAreaEnabled === false) {
+      actionAreaEnabled = true;
+      navigate('/eventdetails')
+    }
+    
+  }
+
+  ////TODO sep this
+  //const handleEventClick = (id) => {
+  //  setState(
+  //    produce((draft) => {
+  //      draft.events.openEventId = id
+  //    })
+  //  );
+  //  console.log('EVENT CLICK')
+  //  console.log(state.events.openEventId)
+  //}
+
+
+  //////https://stackoverflow.com/questions/34687091/can-i-execute-a-function-after-setstate-is-finished-updating
+  //////this.setState({
+  //////  someState: obj
+  //////}, () => {
+  //////  this.afterSetStateFinished();
+  //////});
+
+
+  //TODO sep this
+  const handleEventClick = (id) => {
+    setState(
+      produce((draft) => {
+        draft.events.openEventId = id
+      })
+    );
+    console.log('EVENT CLICK')
+    console.log(state.events.openEventId)
+    //TODO fix task target async
+  
+    //navigate('/taskpage')
+
+    if (actionAreaEnabled === true) {
+      navigate('/taskpage')
+    }
   }
 
 
-
-  //const events = [1, 2, 3,];
-
-
-//  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the "
-//  //const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-///*  const TEMP_desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."*/
-
-
-//  const TEMP_title = "EVENT - eriti pikk event name"
-
-//  const TEMP_nextDeadline = '12.05.2022 20:53'
   const TEMP_TasksDone = '100'
   const TEMP_TasksToDo = '300'
   const TEMP_TasksProgress = 100 * (TEMP_TasksDone / TEMP_TasksToDo)
-
-  //console.log(state.events)
 
   return (
 
@@ -51,7 +92,9 @@ function EventCard() {
         {state.events.data.map((evnt) => (
           <Grid item key={evnt.event_id} xs={12}>
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
-              <Grid container p={3} direction="row">
+              {/*<CardActionArea onClick={() => handleEventClick(evnt.event_id)}  >*/}
+              <CardActionArea>
+                <Grid container p={3} direction="row">
                 <Grid item xs={6} >
                   <Grid container direction="column">
                     <Grid item sx={{ minWidth: '280px' }} xs={2} >
@@ -124,7 +167,7 @@ function EventCard() {
                     </Grid>
                     <Grid item xs={10} >
                       {/*TODO use 300x200 image as baseline*/}
-                      <Card >
+                      <Card onClick={() => handleEventClick(evnt.event_id)}  >
                         <CardMedia
                           component="img"
                           alt="event image"
@@ -137,7 +180,8 @@ function EventCard() {
                     </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
+                </Grid>
+              </CardActionArea>
             </Paper>
           </Grid>
         ))}
