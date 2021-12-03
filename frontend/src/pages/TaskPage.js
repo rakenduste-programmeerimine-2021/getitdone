@@ -15,20 +15,29 @@ function TaskPage() {
 
   const [state, setState] = useContext(Context);
 
+  //const setTasks = (data) => {
+  //  setState(
+  //    produce((draft) => {
+  //      draft.tasks = data
+  //    })
+  //  );
+  //}
 
   useEffect(() => {
     axios.get('http://localhost:3003/tasks').then(resp => {
+      //setTasks(resp)
+      const setTasks = (data) => {
+        setState(
+          produce((draft) => {
+            draft.tasks = data
+          })
+        );
+      }
       setTasks(resp)
     });
-  }, []);
+  }, [setState]);
 
-  const setTasks = (data) => {
-    setState(
-      produce((draft) => {
-        draft.tasks = data
-      })
-    );
-  }
+
 
   const handleAddClick = () => {
     setState(

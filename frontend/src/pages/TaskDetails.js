@@ -11,7 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
-import produce from "immer";
 import React, { useContext, useEffect, useState } from "react";
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
@@ -37,7 +36,7 @@ function TaskDetails() {
       setData(taskDataPre)
       setTimeValue(taskDataPre.deadline)
     } 
-  }, []);
+  }, [state.tasks.data, state.tasks.openTaskId]);
 
   const Input = styled('input')({
     display: 'none',

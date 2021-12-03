@@ -20,6 +20,11 @@ function LogInForm() {
 
   const [state, setState] = useContext(Context);
 
+  //TODO bind backend
+  console.log(state)
+  console.log(setState)
+
+
   return(
     <Box
       sx={{

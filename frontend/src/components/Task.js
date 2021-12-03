@@ -7,9 +7,8 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
 import produce from "immer";
-import React, { Component, useContext, useEffect } from "react";
+import React, { Component, useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 
@@ -70,21 +69,6 @@ class TodoToggle extends Component {
 function Task() {
 
   const [state, setState] = useContext(Context);
-
-  //useEffect(() => {
-  //  axios.get('http://localhost:3003/tasks').then(resp => {
-  //    setTasks(resp)
-  //  });
-  //}, []);
-
-  //const setTasks = (data) => {
-  //  setState(
-  //    produce((draft) => {
-  //      draft.tasks = data
-  //    })
-  //  );
-  //}
-
 
   const handleEditClick = (id) => {
     setState(
