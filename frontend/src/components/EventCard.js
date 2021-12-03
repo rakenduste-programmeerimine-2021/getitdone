@@ -138,7 +138,7 @@ function EventCard() {
                     </Grid>
                     <Grid item xs={10} >
                       {/*TODO use 300x200 image as baseline*/}
-                      <Card onClick={() => handleEventClick(evnt.event_id)}  >
+                      <Card>
                         <CardMedia
                           component="img"
                           alt="event image"
