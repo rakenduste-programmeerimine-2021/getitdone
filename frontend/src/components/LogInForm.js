@@ -11,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import { useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
-//import { loginUser, logoutUser } from "../webapp/actions";
 
 
 //default MUI LogIn page, based on
@@ -19,7 +18,12 @@ import { Context } from "../webapp";
 
 function LogInForm() {
 
-  const [state, dispatch] = useContext(Context);
+  const [state, setState] = useContext(Context);
+
+  //TODO bind backend
+  console.log(state)
+  console.log(setState)
+
 
   return(
     <Box

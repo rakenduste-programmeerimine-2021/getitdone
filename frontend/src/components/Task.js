@@ -7,6 +7,7 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import produce from "immer";
 import React, { Component, useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
@@ -64,36 +65,24 @@ class TodoToggle extends Component {
   }
 }
 
-//function handEditClick(id) {
-//  //const [state] = useContext(Context);
-//  console.log('HANDLE TEST')
-//  //console.log(state.tasks.openTask)
-//}
-
 
 function Task() {
 
-  const [state, dispatch] = useContext(Context);
+  const [state, setState] = useContext(Context);
 
-  const tasks = state.tasks.data;
-
-  //const navigate = useNavigate();
-
-  function handleEditClick(id) {
-    
-    //TODO clean this up
-    state.tasks.openTaskId = id
-    //console.log(this)
-
+  const handleEditClick = (id) => {
+    setState(
+      produce((draft) => {
+        draft.tasks.openTaskId = id
+      })
+    );
   }
 
   return (
 
-    //<Container sx={{ py: 10 }} maxWidth="md">
-    //  <Grid container spacing={5} direction="column">
     <Container>
       <Grid container spacing={5} direction="column">
-        {tasks.map((task) => (
+        {state.tasks.data.map((task) => (
           <Grid item key={task.id} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               <Grid container p={3}>

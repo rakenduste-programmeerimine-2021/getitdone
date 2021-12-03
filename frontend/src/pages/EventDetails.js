@@ -2,7 +2,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import SaveIcon from '@mui/icons-material/Save';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import DateTimePicker from '@mui/lab/DateTimePicker';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -17,26 +16,22 @@ import { Context } from "../webapp";
 
 //TODO handle submit
 
-function TaskDetails() {
+function EventDetails() {
 
   const [state, setState] = useContext(Context);
 
-  const handleTimeChange = (newValue) => {
-    setTimeValue(newValue);
-  };
-
-  const [taskData, setData] = useState([]);
-  const [timeValue, setTimeValue] = React.useState();
+  const [eventData, setData] = useState([]);
 
   useEffect(() => {
-    if (state.tasks.openTaskId != null) {
-      var taskDataPre = state.tasks.data.find(item => {
-        return item.id === state.tasks.openTaskId
+    if (state.events.openEventId != null) {
+      
+      console.log(state.events.openEventId)
+      var eventDataPre = state.events.data.find(item => {
+        return item.event_id === state.events.openEventId
       })
-      setData(taskDataPre)
-      setTimeValue(taskDataPre.deadline)
-    } 
-  }, [state.tasks.data, state.tasks.openTaskId]);
+      setData(eventDataPre)
+    }
+  }, [state.events.data, state.events.openEventId]);
 
   const Input = styled('input')({
     display: 'none',
@@ -46,7 +41,7 @@ function TaskDetails() {
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Grid container direction="column">
-        {/*TODO account status header n local status header here*/}
+          {/*TODO account status header n local status header here*/}
           <Grid item xs={2} sx={{ bgcolor: 'background.default' }}>
 
             <Grid container>
@@ -66,27 +61,19 @@ function TaskDetails() {
             <Stack spacing={2} p={7}>
               <TextField
                 id="outlined-helperText"
-                label="Task Name"
+                label="Event Name"
                 multiline
                 rows={1}
-                defaultValue={taskData.name}
+                defaultValue={eventData.event_name}
                 helperText="Some important text"
               />
 
-              <DateTimePicker
-                label="Date&Time picker"
-                value={timeValue}
-                onChange={handleTimeChange}
-                renderInput={(params) => <TextField {...params} />}
-              />
-
-
               <TextField
                 id="outlined-multiline-static"
-                label="Task description"
+                label="Event description"
                 multiline
                 rows={3}
-                defaultValue={taskData.details}
+                defaultValue={eventData.event_details}
               />
 
               {/*TODO fix placeholder*/}
@@ -122,4 +109,4 @@ function TaskDetails() {
     </>
   );
 }
-export default TaskDetails;
+export default EventDetails;
