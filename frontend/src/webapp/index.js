@@ -40,7 +40,20 @@ function emptyTask() {
   }
 }
 
-var emptyPlaceholder = emptyTask();
+function emptyEvent() {
+  return {
+    id: '',
+    name: '',
+    deadline: new Date(),
+    details: '',
+    img_url: '',
+    completed_by: '',
+    members: ''
+  }
+}
+
+var emptyTaskPlaceholder = emptyTask();
+var emptyEventPlaceholder = emptyEvent();
 
 const initialTasks = {
   //TODO data: [],
@@ -49,10 +62,15 @@ const initialTasks = {
   nrOfTasks: TEST_tasks.length,  //TESTING
   openTaskId: null,  
   openTaskObj: null,
-  emptyTask: emptyPlaceholder
+  emptyTask: emptyTaskPlaceholder
 }
 
-
+const initialEvents = {
+  data: [],
+  openTaskId: null,
+  openTaskObj: null,
+  emptyTask: emptyEventPlaceholder
+}
 
 const initialAuth = {
   token: null,
@@ -60,6 +78,7 @@ const initialAuth = {
 }
 
 const initialState = ({
+  events: initialEvents,
   tasks: initialTasks,
   auth: initialAuth,
 })

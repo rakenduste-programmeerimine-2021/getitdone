@@ -45,11 +45,14 @@ function Home() {
           <Button component={RouterLink} to="/signup">
             SignUp page
           </Button>
+          <Button component={RouterLink} to="/taskdetails">
+            Task DETAILS page
+          </Button>
           <Button component={RouterLink} to="/taskpage">
             Task page
           </Button>
-          <Button component={RouterLink} to="/taskdetails">
-            Task DETAILS page
+          <Button component={RouterLink} to="/eventpage">
+            Event page
           </Button>
         </Stack>
       </Box>
