@@ -20,13 +20,6 @@ CREATE TABLE events(
     PRIMARY KEY (event_id),
 );
 
-CREATE TABLE events_tasks(
-    event_id uuid not null,
-    task_id uuid not null,
-    FOREIGN KEY (event_id) REFERENCES events (event_id),
-    FOREIGN KEY (task_id) REFERENCES tasks (task_id)
-);
-
 CREATE TABLE tasks(
     task_id uuid DEFAULT uuid_generate_v4(),
     task_name TEXT,
@@ -36,4 +29,11 @@ CREATE TABLE tasks(
     task_completed_by TEXT,
     task_members TEXT [],
     PRIMARY KEY (task_id),
+);
+
+CREATE TABLE events_tasks(
+    event_id uuid not null,
+    task_id uuid not null,
+    FOREIGN KEY (event_id) REFERENCES events (event_id),
+    FOREIGN KEY (task_id) REFERENCES tasks (task_id)
 );
