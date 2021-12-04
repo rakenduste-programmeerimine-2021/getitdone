@@ -17,7 +17,7 @@ CREATE TABLE events(
     event_details TEXT,
     event_members TEXT [],
     event_tasks TEXT [],
-    PRIMARY KEY (event_id),
+    PRIMARY KEY (event_id)
 );
 
 CREATE TABLE tasks(
@@ -28,7 +28,7 @@ CREATE TABLE tasks(
     task_image_url TEXT,
     task_completed_by TEXT,
     task_members TEXT [],
-    PRIMARY KEY (task_id),
+    PRIMARY KEY (task_id)
 );
 
 CREATE TABLE events_tasks(
