@@ -4,6 +4,8 @@ const express = require("express");
 const cors = require("cors");
 const md5 = require("md5");
 const secret = "0832c1202da8d382318e329a7c133ea0";
+const db = require("./db");
+
 
 let app = express();
 
@@ -37,8 +39,11 @@ app.post('/register',
        let body = req.body;
        
       
-    
+       if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }else{
         await db.query(`Insert Into users(user_name, user_email, user_password_hash) Values ('${body.name}','${body.email}','${md5(body.password)}')`);
         res.status(200).send();
+      }
       
     };
