@@ -1,11 +1,9 @@
-const { Pool } = require('pg')
+const pgp = require("pg-promise")();
 
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'getitdone',
-    password: 'postgres',
-    port: 5432,
-  })
-
-  module.exports =  pool;
+module.exports = pgp({
+  user: "postgres",
+  host: "backend-db",
+  database: "getitdone",
+  password: "postgres",
+  port: 5432,
+});
