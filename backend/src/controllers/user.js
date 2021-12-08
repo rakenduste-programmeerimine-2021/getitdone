@@ -52,7 +52,7 @@ exports.loginUser = async ({body}, res) => {
       email: user[0].user_email
     }
     console.log(userTemplate);
-
+    console.log(process.env);
     const token = jwt.sign(userTemplate, process.env.JWT_SECRET);
     if (!token) throw Error("Something happened to token");
     console.log(token);
