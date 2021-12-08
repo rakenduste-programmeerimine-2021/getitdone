@@ -5,8 +5,7 @@ const userController = require("../controllers/user");
 
 module.exports = Router()
   .get("/", userController.listUsers)
-  .post(
-    "/register",
+  .post("/register",
     [
       body("name").trim(),
       body("email").isEmail().trim().normalizeEmail(),
@@ -21,4 +20,9 @@ module.exports = Router()
       },
     ],
     userController.registerUser
-  );
+  )
+
+  .post("/login", 
+  
+    userController.loginUser
+  )
