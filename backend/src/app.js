@@ -15,6 +15,12 @@ app.get("/", function (req, res) {
 const userRoutes = require("./routes/user");
 app.use("/api/user", userRoutes);
 
+const eventRoutes = require("./routes/event");
+app.use("/api/event", eventRoutes);
+
+const taskRoutes = require("./routes/task");
+app.use("/api/task", taskRoutes);
+
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
 });

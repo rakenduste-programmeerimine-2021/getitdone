@@ -53,7 +53,8 @@ exports.loginUser = async ({body}, res) => {
     }
     console.log(userTemplate);
     console.log(process.env);
-    const token = jwt.sign(userTemplate, process.env.JWT_SECRET);
+    // TODO FIX process.env.JWT_SECRET
+    const token = jwt.sign(userTemplate, 'secret');
     if (!token) throw Error("Something happened to token");
     console.log(token);
     res.status(200).json({
@@ -63,10 +64,5 @@ exports.loginUser = async ({body}, res) => {
   }catch (e){
     res.status(400).json({ error: e.message })
   }
-
-
-  
-  
-  
 };
 
