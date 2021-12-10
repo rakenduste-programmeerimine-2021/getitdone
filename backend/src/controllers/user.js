@@ -17,6 +17,7 @@ exports.listUsers = async (req, res) => {
 };
 
 exports.registerUser = async ({ body }, res) => {
+  // API requirements {"name":"test", "email":"test@test.com", "password":"testpassword1"} 
   if (await userExists(body)) {
     return res.status(400).json({
       errors: "name or email already in use",
@@ -33,7 +34,7 @@ exports.registerUser = async ({ body }, res) => {
 };
 
 exports.loginUser = async ({body}, res) => {
-    
+    //API requirements {"email":"test@test.com", "password":"testpassword1"}
   try {
     const user = await db.any("Select * From users Where user_email = ${email}",
     body
