@@ -6,6 +6,7 @@ import TaskPage from './pages/TaskPage';
 import EventPage from './pages/EventPage';
 import TaskDetails from './pages/TaskDetails';
 import EventDetails from './pages/EventDetails';
+import ProfileSettings from './pages/ProfileSettings';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/taskdetails" element={<TaskDetails/>} />
         <Route exact path="/eventpage" element={<EventPage />} />
         <Route exact path="/eventdetails" element={<EventDetails />} />
+        <Route exact path="/profilesettings" element={<ProfileSettings />} />
       </Routes>
     </Router>
   );

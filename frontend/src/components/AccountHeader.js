@@ -3,6 +3,7 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import React, { useContext } from "react";
+import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 import UserAvatar from './UserAvatar';
 
@@ -32,7 +33,7 @@ function AccountHeader() {
       <Grid item xs={1}>
         <Fab
           //onClick={() => handleEditClick(evnt.event_id)}
-          //component={RouterLink} to="/eventdetails"
+          component={RouterLink} to="/profilesettings"
           sx={{ width: '35px', height: '35px' }}
           color="primary"
           aria-label="user settings" >
