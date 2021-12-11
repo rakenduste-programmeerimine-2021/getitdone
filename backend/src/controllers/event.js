@@ -17,12 +17,18 @@ exports.createEvent = async ({ body }, res) => {
 exports.addMember = async ({ body }, res) => {
     // API requirements {"event_id":"test", "user_id":"test"} 
     await db.any(
-        //"UPDATE events SET event_members = event_members || ${user_id} WHERE event_id = ${event_id}",
         "UPDATE events SET event_members = array_append(event_members, ${user_id}) WHERE event_id = ${event_id}",
         body
     );
     res.status(200).send();
 };
 
-// UPDATE events SET event_users = event_users || '{test2}' WHERE event_id = 'baa7f43b-f226-401f-be47-380a184b11e8'
-// UPDATE events SET event_members = array_append(event_members, 'fdfdfdfdf') WHERE event_id = 'baa7f43b-f226-401f-be47-380a184b11e8;
+exports.addTask = async ({ body }, res) => {
+    // API requirements {"event_id":"test", "task_id":"test"} 
+    await db.any(
+        "UPDATE events SET event_tasks = array_append(event_tasks, ${task_id}) WHERE event_id = ${event_id}",
+        body
+    );
+    res.status(200).send();
+};
+
