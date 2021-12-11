@@ -9,8 +9,9 @@ import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
+import produce from "immer";
 import { useContext } from "react";
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Context } from "../webapp";
 
 
@@ -20,6 +21,7 @@ import { Context } from "../webapp";
 function LogInForm() {
 
   const [state, setState] = useContext(Context);
+  const navigate = useNavigate();
 
   //TODO bind backend
   console.log(state)
@@ -27,36 +29,33 @@ function LogInForm() {
 
   const handleLogIn = (event) => {
     event.preventDefault();
-    console.log('LOGGED IN ' + state)
 
     //TODO fix security
-    //const loginOut = {
-    //  "email": "test@test.com",
-    //  "password": "testpassword1"
-    //}
+
     const loginOut = {
       "email": event.target.email.value,
       "password": event.target.password.value
     }
     axios.post('http://localhost:8080/api/user/login', loginOut).then(resp => {
-
-      console.log(resp.data)
-      //setTasks(resp)
-      //const setTasks = (data) => {
-      //  setState(
-      //    produce((draft) => {
-      //      draft.tasks = data
-      //    })
-      //  );
-      //}
-      //setTasks(resp)
+      const setAuth = (data) => {
+        setState(
+          produce((draft) => {
+            draft.auth.email = data.email
+            draft.auth.id = data.id
+            draft.auth.token = data.token
+            draft.auth.name = data.name
+          })
+        );
+      }
+      setAuth(resp.data)
+      navigate('/eventpage')
+    }).catch(error => {
+      console.log({
+        error,
+        'error status': error.response.status,
+        'error response': error.response.data
+      })
     });
-
-    //setState(
-    //  produce((draft) => {
-    //    draft.tasks.openTaskId = id
-    //  })
-    //);
   }
 
   return(

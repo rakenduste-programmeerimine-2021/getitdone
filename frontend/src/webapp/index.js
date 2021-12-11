@@ -75,7 +75,7 @@ const initialEvents = {
 const initialAuth = {
   id: null,
   token: null,
-  user: null,
+  name: null,
   email: null
 }
 
