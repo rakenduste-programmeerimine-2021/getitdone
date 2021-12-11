@@ -5,4 +5,5 @@ const taskController = require("../controllers/task");
 
 module.exports = Router()
     .get("/", taskController.listTasks)
+    .post("/createtask", taskController.createTask)
   

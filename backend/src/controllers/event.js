@@ -24,6 +24,7 @@ exports.addMember = async ({ body }, res) => {
 };
 
 exports.addTask = async ({ body }, res) => {
+    //TODO this function is redundant but im leaving it here anyway..
     // API requirements {"event_id":"test", "task_id":"test"} 
     await db.any(
         "UPDATE events SET event_tasks = array_append(event_tasks, ${task_id}) WHERE event_id = ${event_id}",
