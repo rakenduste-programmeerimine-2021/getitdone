@@ -11,7 +11,7 @@ import produce from "immer";
 import React, { Component, useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
-
+import UserAvatar from './UserAvatar';
 
 
 
@@ -102,36 +102,16 @@ function Task() {
                       <Grid container item justify="left"
                         alignItems="center" sx={{ width: '100%', height: '100%', maxHeight: '45px' }} xs={12}>
                         <Grid item sx={{ margin: '4px' }} xs={2} >
-                          <Avatar sx={{
-                            bgcolor: 'primary.main',
-                            width: '35px',
-                            height: '35px'
-                          }}>
-                          </Avatar>
+                          <UserAvatar />
                         </Grid>
                         <Grid item sx={{ margin: '4px' }} xs={2} >
-                          <Avatar sx={{
-                            bgcolor: 'primary.main',
-                            width: '35px',
-                            height: '35px'
-                          }}>
-                          </Avatar>
+                          <UserAvatar />
                         </Grid>
                         <Grid item sx={{ margin: '4px' }} xs={2} >
-                          <Avatar sx={{
-                            bgcolor: 'primary.main',
-                            width: '35px',
-                            height: '35px'
-                          }}>
-                          </Avatar>
+                          <UserAvatar />
                         </Grid>
                         <Grid item sx={{ margin: '4px' }} display={{ xs: "none", md: "block" }} xs={2} >
-                          <Avatar sx={{
-                            bgcolor: 'primary.main',
-                            width: '35px',
-                            height: '35px'
-                          }}>
-                          </Avatar>
+                          <UserAvatar />
                         </Grid>
                         {/*TODO some hidden element here*/}
                         <Grid item sx={{ margin: '4px' }} display={{ xs: "block", md: "none" }} xs={2} >
