@@ -73,8 +73,10 @@ const initialEvents = {
 }
 
 const initialAuth = {
+  id: null,
   token: null,
-  user: null
+  user: null,
+  email: null
 }
 
 const initialState = ({

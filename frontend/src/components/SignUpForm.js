@@ -5,18 +5,57 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 import { useContext } from "react";
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Context } from "../webapp";
 
 
 function SignUpForm() {
 
   const [state, setState] = useContext(Context);
+  const navigate = useNavigate();
 
   //TODO bind backend
   console.log(state)
   console.log(setState)
+
+  const handleSignUp = (event) => {
+    event.preventDefault(); 
+
+    //navigate('/eventpage')
+    //TODO fix this
+
+    const fullName = event.target.firstName.value + ' ' + event.target.lastName.value
+    const signinOut = {
+      "name": fullName,
+      "email": event.target.email.value,
+      "password": event.target.password.value
+    }
+
+    axios.post('http://localhost:8080/api/user/register', signinOut).then(resp => {
+
+      console.log(resp)
+      navigate('/eventpage')
+
+      //TODO cont
+      //setTasks(resp)
+      //const setTasks = (data) => {
+      //  setState(
+      //    produce((draft) => {
+      //      draft.tasks = data
+      //    })
+      //  );
+      //}
+      //setTasks(resp)
+    });
+
+    //setState(
+    //  produce((draft) => {
+    //    draft.tasks.openTaskId = id
+    //  })
+    //);
+  }
 
   return (
     <Box
@@ -35,7 +74,7 @@ function SignUpForm() {
       </Box>
       {/*TODO HANDLE SUBMIT*/}
       {/*<Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>*/}
-      <Box component="form" noValidate sx={{ mt: 1 }}>
+      <Box component="form" onSubmit={handleSignUp} sx={{ mt: 1 }}>
         <div>
           <TextField
             margin="normal"
@@ -77,12 +116,13 @@ function SignUpForm() {
             sx={{ mr: 2, width: '25ch' }}
           />
           <TextField
+            //TODO confirm pass
             //helperText=" "
             margin="normal"
             required
             name="passwordConfirm"
             label="Confirm"
-            type="passwordConfirm"
+            type="password"
             id="passwordConfirm"
             sx={{ mr: 2, width: '25ch' }}
           />

@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 import { useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
@@ -24,6 +25,39 @@ function LogInForm() {
   console.log(state)
   console.log(setState)
 
+  const handleLogIn = (event) => {
+    event.preventDefault();
+    console.log('LOGGED IN ' + state)
+
+    //TODO fix security
+    //const loginOut = {
+    //  "email": "test@test.com",
+    //  "password": "testpassword1"
+    //}
+    const loginOut = {
+      "email": event.target.email.value,
+      "password": event.target.password.value
+    }
+    axios.post('http://localhost:8080/api/user/login', loginOut).then(resp => {
+
+      console.log(resp.data)
+      //setTasks(resp)
+      //const setTasks = (data) => {
+      //  setState(
+      //    produce((draft) => {
+      //      draft.tasks = data
+      //    })
+      //  );
+      //}
+      //setTasks(resp)
+    });
+
+    //setState(
+    //  produce((draft) => {
+    //    draft.tasks.openTaskId = id
+    //  })
+    //);
+  }
 
   return(
     <Box
@@ -43,7 +77,7 @@ function LogInForm() {
       </Typography>
       {/*TODO HANDLE SUBMIT*/}
       {/*<Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>*/}
-      <Box component="form" noValidate sx={{ mt: 1, ml: 3, mr:3 }}>
+      <Box component="form" noValidate onSubmit={handleLogIn} sx={{ mt: 1, ml: 3, mr:3 }}>
 
         <TextField
           margin="normal"
