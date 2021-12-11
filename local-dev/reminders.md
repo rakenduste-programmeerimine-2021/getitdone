@@ -69,3 +69,18 @@ PRIMARY KEY (contact_id)
 ### start outside of docker
 
 set DEBUG=backend:\* & npm start
+
+
+## working APIs
+localhost:8080/api/####
+### used
+api/user - list users
+/register - registers user 
+/login - logs you in
+
+### event
+api/event - list events
+/createevent - create events
+
+### task
+api/task - list tasks
