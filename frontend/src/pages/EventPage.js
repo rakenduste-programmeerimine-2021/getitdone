@@ -18,10 +18,24 @@ function EventPage() {
 
 
   //TODO fix double get
-  console.log(state)
+  console.log('EVENT page load')
+
+
+
+  const reqBody = {
+    //"user_id": state.auth.id
+    "user_id": "727a9c2f-d80d-47c7-bba5-f6798630feb9"
+  }
+  //axios get/post disc
+  //https://stackoverflow.com/questions/46404051/send-object-with-axios-get-request
 
   useEffect(() => {
     axios.get('http://localhost:3003/events').then(resp => {
+    //axios.post('http://localhost:8080/api/event/getuserevents', reqBody).then(resp => {
+
+      console.log('Axios request sent')
+      console.log(resp)
+      //console.log(state)
       const setEvents = (data) => {
         setState(
           produce((draft) => {
@@ -29,8 +43,17 @@ function EventPage() {
           })
         );
       }
+      console.log('EVENT GET RESP')
+      console.log(resp)
       setEvents(resp)
-    });
+    }).catch(error => {
+      console.log({
+        error
+        //error,
+        //'error status': error.response.status,
+        //'error response': error.response.data
+      });
+    })
   }, [setState]);
 
 

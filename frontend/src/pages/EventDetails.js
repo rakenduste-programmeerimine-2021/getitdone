@@ -11,17 +11,36 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
+import { addNewTask } from "../components/API";
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
-
 //TODO handle submit
 
 function EventDetails() {
 
   const [state, setState] = useContext(Context);
+  const navigate = useNavigate();
 
   const [eventData, setData] = useState([]);
+
+
+
+  const handleSave = (event) => {
+    //TODO save confirmation
+   //TODO remove random imgurl
+    event.preventDefault();    
+    const newEventJSON = {
+      "name": event.target.eventname.value,
+      "user_id": state.auth.id,
+      "event_details": event.target.eventdetails.value,
+      "event_image_url": "https://picsum.photos/500/300"
+    }
+    addNewTask(newEventJSON);
+    navigate(-1)
+  }
+
 
   useEffect(() => {
     if (state.events.openEventId != null) {
@@ -57,20 +76,21 @@ function EventDetails() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item component="form" noValidate xs={10}>
+          <Grid item component="form" onSubmit={handleSave} xs={10}>
             {/*TODO fix multiline hack here*/}
             <Stack spacing={2} p={7}>
               <TextField
-                id="outlined-helperText"
+                id="eventname"
                 label="Event Name"
                 multiline
                 rows={1}
+                required
                 defaultValue={eventData.event_name}
                 helperText="Some important text"
               />
 
               <TextField
-                id="outlined-multiline-static"
+                id="eventdetails"
                 label="Event description"
                 multiline
                 rows={3}
