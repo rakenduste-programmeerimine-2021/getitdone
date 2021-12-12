@@ -20,3 +20,9 @@ exports.listTasks = async (req, res) => {
     );
     res.status(200).send();
 };
+
+// task amount in event
+// task done status boolean
+///complete task endpoint
+
+//detailide ülekirjutamine events/tasks/profiles

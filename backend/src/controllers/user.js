@@ -67,3 +67,21 @@ exports.loginUser = async ({body}, res) => {
   }
 };
 
+exports.getUserDetails = async ({body}, res) => {
+  //API requirements {"user_id":"uuid"}
+  const userDetails = await db.one("Select * From users Where user_id = ${user_id}",
+  body
+  );
+  console.log(userDetails);
+  res.status(200).send(userDetails);
+};
+
+
+exports.changeUserDetails = async ({body}, res) => {
+  //API requirements {"user_id":"uuid", "user_name":"test", "user_email":"test@test.t", "user_profile_image_url":"url", "user_details":"details"}
+  await db.any("Update users Set user_name = ${user_name}, user_email = ${user_email}, user_profile_image_url = ${user_profile_image_url}, user_details = ${user_details} Where user_id = ${user_id}", 
+  body);
+
+  res.status(200).send();
+};
+
