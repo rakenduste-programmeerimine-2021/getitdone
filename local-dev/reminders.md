@@ -77,10 +77,24 @@ localhost:8080/api/####
 api/user - list users
 /register - registers user 
 /login - logs you in
+/login, loginUser)
+/getuser, getUserDetails)
+/changeuserdetails, changeUserDetails)
 
 ### event
 api/event - list events
-/createevent - create events
+/create, createEvent)
+/addmember, addMember)  
+/addtask, addTask)  
+/getevent, getEventDetails)
+/changeeventdetails, changeEventDetails)
+/gettaskamount, getTaskAmount)
+/getuserevents, getUserEvents)
 
 ### task
 api/task - list tasks
+/createtask", createTask)
+/gettask",.getTaskDetails)
+/changetaskdetails", changeTaskDetails)
+/geteventtasks", getEventTasks)
+/completetask", completeTask)
