@@ -28,6 +28,9 @@ CREATE TABLE tasks(
     task_image_url TEXT,
     task_completed_by TEXT,
     task_members TEXT [],
+    event_id uuid,
+    CONSTRAINT fk_event
+    FOREIGN KEY (event_id) REFERENCES events (event_id),
     PRIMARY KEY (task_id)
 );
 

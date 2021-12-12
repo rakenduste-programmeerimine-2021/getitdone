@@ -8,4 +8,5 @@ module.exports = Router()
     .post("/createtask", taskController.createTask)
     .get("/gettask", taskController.getTaskDetails)
     .post("/changetaskdetails", taskController.changeTaskDetails)
+    .get("/geteventtasks", taskController.getEventTasks)
   

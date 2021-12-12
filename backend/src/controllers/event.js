@@ -51,3 +51,22 @@ exports.getEventDetails = async ({body}, res) => {
     res.status(200).send();
   };
 
+  exports.getTaskAmount = async ({body}, res) => {
+    //API requirements {"event_id":"uuid"}
+    const amounts = {};
+        amounts.taskAmount = await db.one("Select cardinality(event_tasks) From events Where event_id = ${event_id}", body);
+
+
+    res.status(200).send(amounts);
+  };
+
+  exports.getUserEvents = async ({body}, res) => {
+    //API requirements {"user_id":"uuid"}
+    const events = {};
+    events.userEvents = await db.any("Select * From events Where ${user_id} = Any(event_members)", 
+    body
+    );
+    res.status(200).send(events);
+
+  };
+
