@@ -47,7 +47,7 @@ exports.getEventTasks = async ({body}, res) => {
      );
 
      console.log(tasks.eventTasks);
-     res.status(200).send();
+     res.status(200).send(tasks.eventTasks);
 };
 
 // task amount in event
