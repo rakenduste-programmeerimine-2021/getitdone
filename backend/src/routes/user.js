@@ -26,3 +26,12 @@ module.exports = Router()
   
     userController.loginUser
   )
+  .get("/getuser",
+
+    userController.getUserDetails
+  )
+  
+  .post("/changeuserdetails",
+    userController.changeUserDetails
+  )
+
