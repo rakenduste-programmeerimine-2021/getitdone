@@ -33,3 +33,21 @@ exports.addTask = async ({ body }, res) => {
     res.status(200).send();
 };
 
+exports.getEventDetails = async ({body}, res) => {
+    //API requirements {"event_id":"uuid"}
+    const eventDetails = await db.one("Select * From events Where event_id = ${event_id}",
+    body
+    );
+    console.log(eventDetails);
+    res.status(200).send(eventDetails);
+  };
+  
+  
+  exports.changeEventDetails = async ({body}, res) => {
+    //API requirements {"event_id":"uuid", "event_name":"test","event_image_url":"url", "event_details":"details"}
+    await db.any("Update events Set event_name = ${event_name}, event_image_url = ${event_image_url}, event_details = ${event_details} Where event_id = ${event_id}", 
+    body);
+  
+    res.status(200).send();
+  };
+
