@@ -21,6 +21,24 @@ exports.listTasks = async (req, res) => {
     res.status(200).send();
 };
 
+exports.getTaskDetails = async ({body}, res) => {
+  //API requirements {"task_id":"uuid"}
+  const taskDetails = await db.one("Select * From tasks Where task_id = ${task_id}",
+  body
+  );
+  console.log(taskDetails);
+  res.status(200).send(taskDetails);
+};
+
+
+exports.changeTaskDetails = async ({body}, res) => {
+  //API requirements {"task_id":"uuid", "task_name":"test","task_deadline":"2021-12-17" ,"task_image_url":"url", "task_details":"details"}
+  await db.any("Update tasks Set task_name = ${task_name},  task_deadline = ${task_deadline}, task_image_url = ${task_image_url}, task_details = ${task_details} Where task_id = ${task_id}", 
+  body);
+
+  res.status(200).send();
+};
+
 // task amount in event
 // task done status boolean
 ///complete task endpoint

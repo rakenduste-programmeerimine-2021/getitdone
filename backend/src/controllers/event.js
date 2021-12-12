@@ -6,7 +6,7 @@ exports.listEvents = async (req, res) => {
 };
 
 exports.createEvent = async ({ body }, res) => {
-    // API requirements {"name":"test", "user_id":"test"}    
+    // API requirements {"name":"test", "user_id":"test", }    
     await db.any(
         "INSERT INTO events(event_name, event_members) VALUES (${name},ARRAY [${user_id}])",
         body
