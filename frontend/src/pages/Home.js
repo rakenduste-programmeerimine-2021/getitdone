@@ -57,6 +57,9 @@ function Home() {
           <Button component={RouterLink} to="/eventpage">
             Event page
           </Button>
+          <Button component={RouterLink} to="/profilesettings">
+            Profile Settings Page
+          </Button>
         </Stack>
       </Box>
 

@@ -11,6 +11,7 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import React, { useContext, useEffect, useState } from "react";
+import AccountHeader from '../components/AccountHeader';
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
 
@@ -46,7 +47,7 @@ function EventDetails() {
 
             <Grid container>
               <Grid item p={2} xs={12}>
-                ACCOUNT HEADER HERE
+                <AccountHeader />
               </Grid>
               {/*TODO refactor and finish backbutton*/}
               <Grid item container p={2}>

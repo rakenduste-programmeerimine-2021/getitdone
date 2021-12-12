@@ -6,6 +6,7 @@ import axios from 'axios';
 import produce from "immer";
 import React, { useContext, useEffect } from "react";
 import { Link as RouterLink } from 'react-router-dom';
+import AccountHeader from '../components/AccountHeader';
 import BackButton from '../components/BackButton';
 import EventCard from '../components/EventCard';
 import { Context } from "../webapp";
@@ -50,7 +51,7 @@ function EventPage() {
 
         <Grid container>
           <Grid item p={2} xs={12}>
-            ACCOUNT HEADER HERE
+            <AccountHeader />
           </Grid>
           {/*TODO refactor and finish backbutton*/}
           <Grid item container p={2}>
