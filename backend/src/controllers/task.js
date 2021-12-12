@@ -45,13 +45,17 @@ exports.getEventTasks = async ({body}, res) => {
      tasks.eventTasks = await db.any("Select * From tasks Where event_id = ${event_id}", 
      body
      );
-
-     console.log(tasks.eventTasks);
-     res.status(200).send(tasks.eventTasks);
+     console.log(tasks);
+     res.status(200).send(tasks);
 };
 
 // task amount in event
 // task done status boolean
 ///complete task endpoint
 
-//detailide ülekirjutamine events/tasks/profiles
+exports.completeTask = async ({body}, res) => {
+  //API requirements {"task_id":"uuid", "user_id":"uuid"}
+  console.log(body);
+
+  res.status(200).send(body);
+};
