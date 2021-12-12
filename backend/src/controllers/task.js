@@ -6,9 +6,9 @@ exports.listTasks = async (req, res) => {
   };
 
   exports.createTask = async ({ body }, res) => {
-    // API requirements {"event_id":"test", "task_name":"test"}    
+    // API requirements {"event_id":"test", "task_name":"test", "task_deadline":"2021-1-17", "task_detail":"test", "task_image_url":"url"}    
     let taskQuery = await db.one(
-       "INSERT INTO tasks(task_name, event_id) VALUES (${task_name}, ${event_id}) RETURNING task_id",
+       "INSERT INTO tasks(task_name, event_id, task_deadline, task_details, task_image_url) VALUES (${task_name}, ${event_id}, ${task_deadline}, ${task_details}, ${task_image_url}) RETURNING task_id",
         body
     );
     //TODO make this better
@@ -45,13 +45,17 @@ exports.getEventTasks = async ({body}, res) => {
      tasks.eventTasks = await db.any("Select * From tasks Where event_id = ${event_id}", 
      body
      );
-
-     console.log(tasks.eventTasks);
-     res.status(200).send(tasks.eventTasks);
+     console.log(tasks);
+     res.status(200).send(tasks);
 };
 
 // task amount in event
 // task done status boolean
 ///complete task endpoint
 
-//detailide ülekirjutamine events/tasks/profiles
+exports.completeTask = async ({body}, res) => {
+  //API requirements {"task_id":"uuid", "user_id":"uuid"}
+  console.log(body);
+
+  res.status(200).send(body);
+};

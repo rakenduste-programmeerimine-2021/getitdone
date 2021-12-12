@@ -6,7 +6,7 @@ const taskController = require("../controllers/task");
 module.exports = Router()
     .get("/", taskController.listTasks)
     .post("/createtask", taskController.createTask)
-    .get("/gettask", taskController.getTaskDetails)
+    .post("/gettask", taskController.getTaskDetails)
     .post("/changetaskdetails", taskController.changeTaskDetails)
-    .get("/geteventtasks", taskController.getEventTasks)
-  
+    .post("/geteventtasks", taskController.getEventTasks)
+    .post("/completetask", taskController.completeTask)
