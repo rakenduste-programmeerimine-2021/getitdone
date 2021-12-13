@@ -62,3 +62,16 @@ exports.completeTask = async ({body}, res) => {
   res.status(200).send();
 };
 
+exports.getCompleteStatus = async({body}, res) => {
+  //API requirements {"task_id":"uuid"}
+  const complete = await db.one("Select task_completed_by From tasks Where task_id = ${task_id}", 
+  body
+  );
+  if(!complete.task_completed_by){
+    complete.status = false;
+  }
+  else{
+    complete.status = true;
+  }
+  res.status(200).send(complete.status);
+};
