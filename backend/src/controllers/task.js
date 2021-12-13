@@ -56,6 +56,9 @@ exports.getEventTasks = async ({body}, res) => {
 exports.completeTask = async ({body}, res) => {
   //API requirements {"task_id":"uuid", "user_id":"uuid"}
   console.log(body);
-
-  res.status(200).send(body);
+  await db.any("Update tasks Set task_completed_by = ${user_id} Where task_id = ${task_id}", 
+  body
+  );
+  res.status(200).send();
 };
+

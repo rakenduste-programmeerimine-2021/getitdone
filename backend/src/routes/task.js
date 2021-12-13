@@ -10,3 +10,4 @@ module.exports = Router()
     .post("/changetaskdetails", taskController.changeTaskDetails)
     .post("/geteventtasks", taskController.getEventTasks)
     .post("/completetask", taskController.completeTask)
+    
