@@ -23,8 +23,8 @@ function EventPage() {
 
 
   const reqBody = {
-    //"user_id": state.auth.id
-    "user_id": "727a9c2f-d80d-47c7-bba5-f6798630feb9"
+    "user_id": state.auth.id
+    //"user_id": "727a9c2f-d80d-47c7-bba5-f6798630feb9"
   }
   //axios get/post disc
   //https://stackoverflow.com/questions/46404051/send-object-with-axios-get-request
