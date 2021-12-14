@@ -9,6 +9,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
 import BackButton from '../components/BackButton';
 import EventCard from '../components/EventCard';
+import { getSessAuth } from '../components/TEMP_auth';
 import { Context } from "../webapp";
 
 
@@ -66,6 +67,7 @@ function EventPage() {
       }
     }
     makeEventReq()
+    getSessAuth()
 
   }, [setState]);
 

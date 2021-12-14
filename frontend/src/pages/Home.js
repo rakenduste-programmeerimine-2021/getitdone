@@ -5,12 +5,19 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 import { Button, Stack, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
+import React, { useEffect } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import EventCard from '../components/EventCard';
 import Task from '../components/Task';
-
+import { getSessAuth } from '../components/TEMP_auth';
 
 function Home() {
+
+  //TODO testing
+  useEffect(() => {
+    getSessAuth()
+  })
+  
   return (
     <div className="Home">
       <Typography variant="h2">

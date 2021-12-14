@@ -13,6 +13,7 @@ import produce from "immer";
 import { useContext } from "react";
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Context } from "../webapp";
+import { setSessAuth, getSessAuth } from "./TEMP_auth"
 
 
 //default MUI LogIn page, based on
@@ -26,6 +27,14 @@ function LogInForm() {
   //TODO bind backend
   console.log(state)
   console.log(setState)
+
+
+  //window.sessionStorage.setItem("authTest", "123");
+
+  //console.log('AUTH TEST >> ')
+  //console.log(window.sessionStorage.getItem("authTest"))
+  //window.sessionStorage.getItem("key");
+
 
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -44,10 +53,12 @@ function LogInForm() {
             draft.auth.id = data.id
             draft.auth.token = data.token
             draft.auth.name = data.name
+            setSessAuth(draft.auth.id, draft.auth.token)
           })
         );
       }
       setAuth(resp.data)
+
       navigate('/eventpage')
     }).catch(error => {
       console.log({

@@ -6,6 +6,7 @@ import React, { useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 import UserAvatar from './UserAvatar';
+import LogoutButton from './LogoutButton';
 
 function AccountHeader() {
 
@@ -23,14 +24,17 @@ function AccountHeader() {
   return (
 
     <Grid container direction="row">
-      <Grid item sx={{ display: "flex", justifyContent: "flex-start" }} xs={8}>
+      <Grid item sx={{ display: "flex", justifyContent: "flex-start" }} xs={5}>
         <Typography align={'left'} sx={{ p: '6px' }} noWrap variant="h6" >
           {userName}
         </Typography>
       </Grid>
       <Grid item xs={2}>
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={2}>
+        <LogoutButton/>
+      </Grid>
+      <Grid item xs={2}>
         <Fab
           //onClick={() => handleEditClick(evnt.event_id)}
           component={RouterLink} to="/profilesettings"
