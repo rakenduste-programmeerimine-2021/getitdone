@@ -45,6 +45,12 @@ function EventDetails() {
     navigate(-1)
   }
 
+  const handleDelete = (event) => {
+    console.log('DELETE HANDEL >> ')
+    console.log(eventData)
+
+  }
+
 
   useEffect(() => {
     if (state.events.openEventId != null) {
@@ -124,7 +130,7 @@ function EventDetails() {
                 Save
               </Button>
 
-              <Button variant="outlined" startIcon={<DeleteIcon />}>
+              <Button variant="outlined" onClick={handleDelete} startIcon={<DeleteIcon />}>
                 Delete
               </Button>
             </Stack>
