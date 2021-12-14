@@ -11,4 +11,5 @@ module.exports = Router()
     .post("/geteventtasks", taskController.getEventTasks)
     .post("/completetask", taskController.completeTask)
     .post("/getcompletestatus", taskController.getCompleteStatus)
+    .delete("/deletetask", taskController.deleteTask)
     

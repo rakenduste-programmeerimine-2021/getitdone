@@ -75,3 +75,14 @@ exports.getCompleteStatus = async({body}, res) => {
   }
   res.status(200).send(complete.status);
 };
+
+exports.deleteTask = async({body}, res) => {
+  //API requirements {"task_id":"uuid"}
+  await db.any("Delete From tasks Where task_id = ${task_id}", 
+  body
+  );
+
+  res.status(200).send()
+};
+
+

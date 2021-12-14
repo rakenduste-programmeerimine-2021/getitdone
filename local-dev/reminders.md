@@ -98,3 +98,5 @@ api/task - list tasks
 /changetaskdetails", changeTaskDetails
 /geteventtasks", getEventTasks
 /completetask", completeTask
+/getcompletestatus", getCompleteStatus
+/deletetask", deleteTask
