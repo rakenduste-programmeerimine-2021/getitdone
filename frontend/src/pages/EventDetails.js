@@ -30,12 +30,16 @@ function EventDetails() {
   const handleSave = (event) => {
     //TODO save confirmation
    //TODO remove random imgurl
-    event.preventDefault();    
+    event.preventDefault();
+
+    //TESTING ONLY
+    //new Date().getTime()
     const newEventJSON = {
       "name": event.target.eventname.value,
       "user_id": state.auth.id,
       "event_details": event.target.eventdetails.value,
-      "event_image_url": "https://picsum.photos/500/300"
+      //"event_image_url": 'https://picsum.photos/500/300'
+      "event_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()
     }
     addNewTask(newEventJSON);
     navigate(-1)

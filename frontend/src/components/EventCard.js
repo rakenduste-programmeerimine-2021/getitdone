@@ -56,10 +56,14 @@ function EventCard() {
   const TEMP_TasksToDo = '300'
   const TEMP_TasksProgress = 100 * (TEMP_TasksDone / TEMP_TasksToDo)
 
+  console.log('EVENT CARD MAP')
+  console.log(state.events.data)
+
   return (
 
     <Container sx={{ py: 10}} maxWidth="md">
       <Grid container spacing={5} direction="column">
+        {/*{state.events.data.map((evnt) => (*/}
         {state.events.data.map((evnt) => (
           <Grid item key={evnt.event_id} xs={12}>
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
@@ -144,7 +148,7 @@ function EventCard() {
                           alt="event image"
                           height="120px"
                           width="220px"
-                          image={evnt.event_img_url}
+                          image={evnt.event_image_url}
                           sx={{ width: '100%', height: '100%', maxWidth: '410px', maxHeight: '200px' }}
                         />
                       </Card>
