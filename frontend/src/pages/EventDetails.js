@@ -36,7 +36,7 @@ function EventDetails() {
     //new Date().getTime()
     const newEventJSON = {
       "name": event.target.eventname.value,
-      "user_id": state.auth.id,
+      "user_id": window.sessionStorage.getItem("TEMP_uid"),
       "event_details": event.target.eventdetails.value,
       //"event_image_url": 'https://picsum.photos/500/300'
       "event_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()

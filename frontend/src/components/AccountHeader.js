@@ -14,7 +14,7 @@ function AccountHeader() {
 
   console.log(state)
 
-  var userName = state.auth.name;
+  var userName = window.sessionStorage.getItem("name");
   if (!userName) {
     userName = 'DEFAULT TESTING USER'
   }

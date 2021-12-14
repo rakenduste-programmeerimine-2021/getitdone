@@ -20,8 +20,8 @@ function ProfileSettings() {
   //TODO split name
   //TODO account settings change API
   //TODO handle API endpoints
-  const name = state.auth.name;
-  const email = state.auth.email;
+  const name = window.sessionStorage.getItem("name");
+  const email = window.sessionStorage.getItem("email");
 
 
   return (

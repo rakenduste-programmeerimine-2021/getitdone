@@ -49,11 +49,12 @@ function LogInForm() {
       const setAuth = (data) => {
         setState(
           produce((draft) => {
-            draft.auth.email = data.email
-            draft.auth.id = data.id
-            draft.auth.token = data.token
-            draft.auth.name = data.name
-            setSessAuth(draft.auth.id, draft.auth.token)
+            //draft.auth.email = data.email
+            //draft.auth.id = data.id
+            //draft.auth.token = data.token
+            //draft.auth.name = data.name
+            setSessAuth(data.token, data.id,  data.name, data.email)
+            getSessAuth()
           })
         );
       }
