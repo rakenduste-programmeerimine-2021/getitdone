@@ -83,6 +83,7 @@ api/user - list users
 
 ### event
 api/event - list events
+post-
 /create, createEvent
 /addmember, addMember
 /addtask, addTask 
@@ -90,13 +91,17 @@ api/event - list events
 /changeeventdetails, changeEventDetails
 /gettaskamount, getTaskAmount
 /getuserevents, getUserEvents
+delete-
+/deletetask, deleteTask
 
 ### task
 api/task - list tasks
+post-
 /createtask", createTask
 /gettask",.getTaskDetails
 /changetaskdetails", changeTaskDetails
 /geteventtasks", getEventTasks
 /completetask", completeTask
 /getcompletestatus", getCompleteStatus
+delete-
 /deletetask", deleteTask
