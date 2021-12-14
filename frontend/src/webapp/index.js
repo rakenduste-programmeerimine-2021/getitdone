@@ -79,11 +79,13 @@ const initialAuth = {
   email: null
 }
 
-const initialState = ({
+export const initialState = ({
   events: initialEvents,
   tasks: initialTasks,
   auth: initialAuth,
 })
+
+
 
 export const Context = createContext()
 

@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import produce from "immer";
 import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import { Context } from "../webapp";
+import { Context, initialState } from "../webapp";
 import { endSessAuth } from './TEMP_auth';
 
 function LogoutButton() {
@@ -18,6 +18,7 @@ function LogoutButton() {
         draft.auth.token = null
         draft.auth.name = null
         endSessAuth()
+        setState(initialState)
         navigate('../')
       })
     );
