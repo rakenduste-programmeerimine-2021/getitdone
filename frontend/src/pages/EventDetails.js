@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
+import Popover from '@mui/material/Popover';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
@@ -30,6 +31,10 @@ function EventDetails() {
   const [eventData, setData] = useState([]);
 
   const [checked, setChecked] = React.useState(false);
+  const [doneOpen, setdoneOpen] = React.useState(false);
+
+
+  //const [anchorEl, setAnchorEl] = React.useState(null);
 
   //TODO saveRef
   //const saveRef
@@ -37,19 +42,13 @@ function EventDetails() {
   //const popupRef = React.createRef();
   const popupRef = React.createRef();
 
-  const handleDone = () => {
+  const handleDone = (event) => {
     //console.log(popupRef)
     //popupRef.current.handleChange()
     console.log('handleChange')
     setChecked((prev) => !prev);
+    setdoneOpen(true)
   }
-
-  //const callbackRef = (ref) => {
-  //  console.log('Attached node: ', ref);
-  //  //if (AffirmPopup) {
-  //  //  AffirmPopup.focus();
-  //  //}
-  //}
 
 
   const handleSave = (event) => {
@@ -83,7 +82,18 @@ function EventDetails() {
       console.log('EVENT CHANGED >> ' + state.events.openEventId)
     }
     //TODO confirmation animation here
-    navigate(-1)
+
+    handleDone()
+
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const navDelay = async (time) => {
+      await delay(time);
+      navigate(-1)
+    };
+    navDelay(1000)
+
+    //TODO add this back in
+    //navigate(-1)
   }
 
   const handleDelete = (event) => {
@@ -177,14 +187,23 @@ function EventDetails() {
               </Button>
             </Stack>
             {/*<AffirmPopup ref={popupRef} />*/}
-            <Box sx={{ height: 180 }}>
-              <Box sx={{ display: 'flex' }}>
-                {/*        <Zoom in={checked}>{icon}</Zoom>*/}
-                <Zoom in={checked} style={{ transitionDelay: checked ? '500ms' : '0ms' }}>
-                  <SaveIcon />
-                </Zoom>
+            <Popover
+              //id={id}
+              open={doneOpen}
+              //onClose={handleClose}
+              anchorReference={"none"}
+              sx={{ display: "flex", justifyContent: "center", alignItems :"center" }}
+            >
+              <Box >
+                <Box sx={{ display: 'flex' }}>
+                  {/*        <Zoom in={checked}>{icon}</Zoom>*/}
+                  <Zoom in={checked} style={{ transitionDelay: checked ? '300ms' : '0ms' }}>
+                    <SaveIcon sx={{ width: '100%', height: '100%' }} />
+                  </Zoom>
+                </Box>
               </Box>
-            </Box>
+            </Popover>
+
             <FormControlLabel
               //popupRef.handleChange()
               control={<Switch onChange={handleDone} />}
