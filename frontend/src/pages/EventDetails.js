@@ -126,7 +126,7 @@ function EventDetails() {
                 rows={1}
                 required
                 defaultValue={eventData.event_name}
-                helperText="Some important text"
+                //helperText="Some important text"
               />
 
               <TextField
