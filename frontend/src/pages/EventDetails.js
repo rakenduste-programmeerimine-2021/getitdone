@@ -33,27 +33,12 @@ function EventDetails() {
   const [checked, setChecked] = React.useState(false);
   const [doneOpen, setdoneOpen] = React.useState(false);
 
-
-  //const [anchorEl, setAnchorEl] = React.useState(null);
-
-  //TODO saveRef
-  //const saveRef
-
-  //const popupRef = React.createRef();
-  const popupRef = React.createRef();
-
   const handleDone = (event) => {
-    //console.log(popupRef)
-    //popupRef.current.handleChange()
-    console.log('handleChange')
     setChecked((prev) => !prev);
     setdoneOpen(true)
   }
 
-
   const handleSave = (event) => {
-    //TODO handle case update vs add new
-    //TODO save confirmation
    //TODO remove random imgurl
     event.preventDefault();
 
@@ -90,10 +75,7 @@ function EventDetails() {
       await delay(time);
       navigate(-1)
     };
-    navDelay(1000)
-
-    //TODO add this back in
-    //navigate(-1)
+    navDelay(800)
   }
 
   const handleDelete = (event) => {
@@ -123,14 +105,12 @@ function EventDetails() {
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Grid container direction="column">
-          {/*TODO account status header n local status header here*/}
           <Grid item xs={2} sx={{ bgcolor: 'background.default' }}>
 
             <Grid container>
               <Grid item p={2} xs={12}>
                 <AccountHeader />
               </Grid>
-              {/*TODO refactor and finish backbutton*/}
               <Grid item container p={2}>
                 <Grid item xs={5}>
                   <BackButton />
@@ -174,23 +154,15 @@ function EventDetails() {
                   <PhotoCamera />
                 </IconButton>
               </label>
-
-
-              {/*TODO HANDLE SUBMIT*/}
-
               <Button variant="contained" type="submit" endIcon={<SaveIcon />}>
                 Save
               </Button>
-
               <Button variant="outlined" onClick={handleDelete} startIcon={<DeleteIcon />}>
                 Delete
               </Button>
             </Stack>
-            {/*<AffirmPopup ref={popupRef} />*/}
             <Popover
-              //id={id}
               open={doneOpen}
-              //onClose={handleClose}
               anchorReference={"none"}
               sx={{ display: "flex", justifyContent: "center", alignItems :"center" }}
             >
@@ -203,13 +175,6 @@ function EventDetails() {
                 </Box>
               </Box>
             </Popover>
-
-            <FormControlLabel
-              //popupRef.handleChange()
-              control={<Switch onChange={handleDone} />}
-              label="Show2"
-            />
-            
           </Grid>
         </Grid>
       </LocalizationProvider>
