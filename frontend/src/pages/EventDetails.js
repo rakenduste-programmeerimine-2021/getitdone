@@ -5,18 +5,21 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
+import AffirmPopup from '../components/AffirmPopup';
 import { addNewEvent, editEvent } from "../components/API";
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
-//TODO handle submit
+
 
 function EventDetails() {
 
@@ -25,6 +28,18 @@ function EventDetails() {
 
   const [eventData, setData] = useState([]);
 
+  //TODO saveRef
+  //const saveRef
+
+  //const popupRef = React.createRef();
+  const popupRef = React.createRef();
+
+  //const callbackRef = (ref) => {
+  //  console.log('Attached node: ', ref);
+  //  //if (AffirmPopup) {
+  //  //  AffirmPopup.focus();
+  //  //}
+  //}
 
 
   const handleSave = (event) => {
@@ -151,6 +166,13 @@ function EventDetails() {
                 Delete
               </Button>
             </Stack>
+            <AffirmPopup ref={popupRef} />
+            <FormControlLabel
+              //popupRef.handleChange()
+              control={<Switch onChange={() => { console.log(popupRef) }} />}
+              label="Show2"
+            />
+            
           </Grid>
         </Grid>
       </LocalizationProvider>
