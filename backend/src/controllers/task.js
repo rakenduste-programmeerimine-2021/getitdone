@@ -6,7 +6,7 @@ exports.listTasks = async (req, res) => {
   };
 
   exports.createTask = async ({ body }, res) => {
-    // API requirements {"event_id":"test", "task_name":"test", "task_deadline":"2021-1-17", "task_detail":"test", "task_image_url":"url"}    
+    // API requirements {"event_id":"test", "task_name":"test", "task_deadline":"2021-1-17", "task_details":"test", "task_image_url":"url"}    
     let taskQuery = await db.one(
        "INSERT INTO tasks(task_name, event_id, task_deadline, task_details, task_image_url) VALUES (${task_name}, ${event_id}, ${task_deadline}, ${task_details}, ${task_image_url}) RETURNING task_id",
         body

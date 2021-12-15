@@ -86,7 +86,7 @@ api/event - list events
 post-
 /create, createEvent
 /addmember, addMember
-/addtask, addTask 
+/addtask, addTask - dont use
 /getevent, getEventDetails
 /changeeventdetails, changeEventDetails
 /gettaskamount, getTaskAmount
