@@ -24,16 +24,17 @@ function AccountHeader() {
   return (
 
     <Grid container direction="row">
-      <Grid item sx={{ display: "flex", justifyContent: "flex-start" }} xs={5}>
+      <Grid item sx={{ display: "flex", justifyContent: "flex-start" }} xs={1}>
+        <UserAvatar />
+      </Grid>
+      <Grid item sx={{ display: "flex", justifyContent: "flex-start", pl:"7" }} xs={5}>
         <Typography align={'left'} sx={{ p: '6px' }} noWrap variant="h6" >
           {userName}
         </Typography>
       </Grid>
       <Grid item xs={2}>
       </Grid>
-      <Grid item xs={2}>
-        <LogoutButton/>
-      </Grid>
+
       <Grid item xs={2}>
         <Fab
           //onClick={() => handleEditClick(evnt.event_id)}
@@ -45,10 +46,10 @@ function AccountHeader() {
           </SettingsIcon>
         </Fab>
       </Grid>
-
-      <Grid item sx={{ display: "flex", justifyContent: "flex-end" }} xs={1}>
-        <UserAvatar   />
+      <Grid item xs={2}>
+        <LogoutButton />
       </Grid>
+
     </Grid>
   )
 }
