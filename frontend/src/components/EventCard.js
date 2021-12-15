@@ -14,6 +14,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 import CardActionArea from '@mui/material/CardActionArea';
 import { useNavigate } from 'react-router-dom';
+import { setCurrentEvent } from './TEMP_auth';
 
 function EventCard() {
 
@@ -40,6 +41,7 @@ function EventCard() {
 
   //TODO sep this
   const handleEventClick = (id) => {
+    setCurrentEvent(id)
     setState(
       produce((draft) => {
         draft.events.openEventId = id

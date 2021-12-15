@@ -32,3 +32,7 @@ export function endSessAuth() {
 	window.sessionStorage.setItem("email", null);
 }
 
+
+export function setCurrentEvent(eventId) {
+	window.sessionStorage.setItem("currentEvent", eventId);
+}

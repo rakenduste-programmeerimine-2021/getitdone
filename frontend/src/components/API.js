@@ -21,7 +21,7 @@ export function editEvent(data) {
 
 //TODO .. backend is broken
 export function addNewTask(data) {
-  axios.post('', data).then(resp => {
+  axios.post('http://localhost:8080/api/task/createtask', data).then(resp => {
     console.log('New Task added')
   }).catch(error => {
     console.log(error)
