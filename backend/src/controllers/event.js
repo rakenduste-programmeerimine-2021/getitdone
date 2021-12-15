@@ -70,3 +70,14 @@ exports.getEventDetails = async ({body}, res) => {
 
   };
 
+  exports.deleteEvent = async ({body}, res) => {
+    //API requirements {"event_id":"uuid"}
+    await db.any("Delete From tasks Where event_id = ${event_id}",
+    body
+    );
+    await db.any("Delete From events Where event_id = ${event_id}",
+    body
+    );
+    res.status(200).send();
+  };
+
