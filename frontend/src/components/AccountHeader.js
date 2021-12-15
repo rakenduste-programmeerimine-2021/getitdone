@@ -35,7 +35,7 @@ function AccountHeader() {
       <Grid item xs={2}>
       </Grid>
 
-      <Grid item xs={2}>
+      <Grid item item sx={{ display: "flex", justifyContent: "flex-end" }} xs={2}>
         <Fab
           //onClick={() => handleEditClick(evnt.event_id)}
           component={RouterLink} to="/profilesettings"
@@ -46,8 +46,8 @@ function AccountHeader() {
           </SettingsIcon>
         </Fab>
       </Grid>
-      <Grid item xs={2}>
-        <LogoutButton />
+      <Grid item sx={{ display: "flex", justifyContent: "flex-end" }} xs={2}>
+        <LogoutButton  />
       </Grid>
 
     </Grid>

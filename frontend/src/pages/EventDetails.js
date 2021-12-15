@@ -46,6 +46,7 @@ function EventDetails() {
   }
 
   const handleDelete = (event) => {
+    //TODO need delete api
     console.log('DELETE HANDEL >> ')
     console.log(eventData)
 
