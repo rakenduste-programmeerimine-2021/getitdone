@@ -6,7 +6,7 @@ exports.listTasks = async (req, res) => {
   };
 
   exports.createTask = async ({ body }, res) => {
-    // API requirements {"event_id":"test", "task_name":"test", "task_deadline":"2021-1-17", "task_detail":"test", "task_image_url":"url"}    
+    // API requirements {"event_id":"test", "task_name":"test", "task_deadline":"2021-1-17", "task_details":"test", "task_image_url":"url"}    
     let taskQuery = await db.one(
        "INSERT INTO tasks(task_name, event_id, task_deadline, task_details, task_image_url) VALUES (${task_name}, ${event_id}, ${task_deadline}, ${task_details}, ${task_image_url}) RETURNING task_id",
         body
@@ -56,6 +56,33 @@ exports.getEventTasks = async ({body}, res) => {
 exports.completeTask = async ({body}, res) => {
   //API requirements {"task_id":"uuid", "user_id":"uuid"}
   console.log(body);
-
-  res.status(200).send(body);
+  await db.any("Update tasks Set task_completed_by = ${user_id} Where task_id = ${task_id}", 
+  body
+  );
+  res.status(200).send();
 };
+
+exports.getCompleteStatus = async({body}, res) => {
+  //API requirements {"task_id":"uuid"}
+  const complete = await db.one("Select task_completed_by From tasks Where task_id = ${task_id}", 
+  body
+  );
+  if(!complete.task_completed_by){
+    complete.status = false;
+  }
+  else{
+    complete.status = true;
+  }
+  res.status(200).send(complete.status);
+};
+
+exports.deleteTask = async({body}, res) => {
+  //API requirements {"task_id":"uuid"}
+  await db.any("Delete From tasks Where task_id = ${task_id}", 
+  body
+  );
+
+  res.status(200).send()
+};
+
+
