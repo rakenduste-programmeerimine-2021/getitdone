@@ -4,6 +4,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
@@ -12,10 +13,10 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
-import React, { useContext, useEffect, useState, useRef } from "react";
+import Zoom from '@mui/material/Zoom';
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
-import AffirmPopup from '../components/AffirmPopup';
 import { addNewEvent, editEvent } from "../components/API";
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
@@ -28,11 +29,20 @@ function EventDetails() {
 
   const [eventData, setData] = useState([]);
 
+  const [checked, setChecked] = React.useState(false);
+
   //TODO saveRef
   //const saveRef
 
   //const popupRef = React.createRef();
   const popupRef = React.createRef();
+
+  const handleDone = () => {
+    //console.log(popupRef)
+    //popupRef.current.handleChange()
+    console.log('handleChange')
+    setChecked((prev) => !prev);
+  }
 
   //const callbackRef = (ref) => {
   //  console.log('Attached node: ', ref);
@@ -166,10 +176,18 @@ function EventDetails() {
                 Delete
               </Button>
             </Stack>
-            <AffirmPopup ref={popupRef} />
+            {/*<AffirmPopup ref={popupRef} />*/}
+            <Box sx={{ height: 180 }}>
+              <Box sx={{ display: 'flex' }}>
+                {/*        <Zoom in={checked}>{icon}</Zoom>*/}
+                <Zoom in={checked} style={{ transitionDelay: checked ? '500ms' : '0ms' }}>
+                  <SaveIcon />
+                </Zoom>
+              </Box>
+            </Box>
             <FormControlLabel
               //popupRef.handleChange()
-              control={<Switch onChange={() => { console.log(popupRef) }} />}
+              control={<Switch onChange={handleDone} />}
               label="Show2"
             />
             
