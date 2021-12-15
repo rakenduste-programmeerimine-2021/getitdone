@@ -19,7 +19,6 @@ function AccountHeader() {
     userName = 'DEFAULT TESTING USER'
   }
 
-  console.log(userName)
 
   return (
 

@@ -28,6 +28,7 @@ function EventDetails() {
 
 
   const handleSave = (event) => {
+    //TODO handle case update vs add new
     //TODO save confirmation
    //TODO remove random imgurl
     event.preventDefault();
