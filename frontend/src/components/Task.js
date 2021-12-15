@@ -33,6 +33,7 @@ class TodoToggle extends Component {
   constructor(props) {
     super(props);
     this.child = React.createRef();
+    this.taskId = null;
   }
 
   toggleDone() {
@@ -40,10 +41,12 @@ class TodoToggle extends Component {
       this.setState({ toggleState: !this.state.toggleState })
       this.setState({ visibilityState: 'hidden' })
       //TODO db hook
+      console.log('toggleState === true  >>  ' + this.props.taskId)
     } else if (this.state.toggleState === false) {
       this.setState({ toggleState: !this.state.toggleState })
       this.setState({ visibilityState: '' })
       //TODO db hook
+      console.log('toggleState === false  >>  ' + this.taskId)
     }
   }
 
@@ -143,7 +146,7 @@ function Task() {
                 <Grid item  xs={1}>
                 </Grid>
                 <Grid item sx={{ minWidth: '70px', minHeight: '70px' }} md={2} xs={3}>
-                  <TodoToggle/>
+                  <TodoToggle taskId={task.id}/>
                 </Grid>
                 <Grid container item sx={{ maxHeight: '45px', maxWidth: '355px', minWidth: '355px' }} xs={8}>
                   <Grid item xs={6}>
