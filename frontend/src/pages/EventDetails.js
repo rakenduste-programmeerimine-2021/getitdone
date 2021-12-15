@@ -13,7 +13,7 @@ import TextField from '@mui/material/TextField';
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
-import { addNewTask } from "../components/API";
+import { addNewEvent, editEvent } from "../components/API";
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
 //TODO handle submit
@@ -33,16 +33,31 @@ function EventDetails() {
    //TODO remove random imgurl
     event.preventDefault();
 
-    //TESTING ONLY
-    //new Date().getTime()
-    const newEventJSON = {
-      "name": event.target.eventname.value,
-      "user_id": window.sessionStorage.getItem("TEMP_uid"),
-      "event_details": event.target.eventdetails.value,
-      //"event_image_url": 'https://picsum.photos/500/300'
-      "event_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()
+    if (!state.events.openEventId) {
+      //TESTING ONLY
+      //new Date().getTime()
+      const newEventJSON = {
+        "name": event.target.eventname.value,
+        "user_id": window.sessionStorage.getItem("TEMP_uid"),
+        "event_details": event.target.eventdetails.value,
+        //"event_image_url": 'https://picsum.photos/500/300'
+        "event_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()
+      }
+      addNewEvent(newEventJSON);
+      console.log('NEW EVENT ADDED')
+    } else {
+      //TODO backend changes?
+      const newEventJSON = {
+        "event_id": state.events.openEventId,
+        "event_name": event.target.eventname.value,
+        "event_details": event.target.eventdetails.value,
+        //"event_image_url": 'https://picsum.photos/500/300'
+        "event_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()
+      }
+      editEvent(newEventJSON)
+      console.log('EVENT CHANGED >> ' + state.events.openEventId)
     }
-    addNewTask(newEventJSON);
+    //TODO confirmation animation here
     navigate(-1)
   }
 
