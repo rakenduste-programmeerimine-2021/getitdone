@@ -13,6 +13,7 @@ import produce from "immer";
 import React, { useContext } from "react";
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Context } from "../webapp";
+import { eventProgress } from './API';
 import { setCurrentEvent } from './TEMP_auth';
 
 function EventCard() {
@@ -36,6 +37,9 @@ function EventCard() {
       })
     );
   }
+
+
+
 
 
   //TODO sep this

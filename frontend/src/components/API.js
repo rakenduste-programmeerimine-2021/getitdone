@@ -22,6 +22,26 @@ export function deleteEvent(eventId) {
 
 }
 
+export function eventProgress(eventId) {
+
+  //TODO no API for task done, TEMP placeholder
+  var eDone = 1;
+  var eTotal = 3;
+
+  //axios.post(
+  //  'http://localhost:8080/api/event/gettaskamount',
+  //  {
+  //    data: { "event_id": eventId },
+  //  }).then((resp => {
+
+  //    eTotal = resp.data
+
+  //  }));
+  console.log('EVENT PROGRESS >> ' + eventId)
+  console.log([eDone, eTotal])
+  return [eDone, eTotal]
+}
+
 export function addNewEvent(data) {
   //TODO event description
   axios.post('http://localhost:8080/api/event/create', data).then(resp => {
