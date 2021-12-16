@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import produce from "immer";
-import React, { Component, useContext } from "react";
+import React, { Component, useContext,useState } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 import { getTaskStatus, setTaskDone, setTaskUnDone } from './API';
@@ -23,7 +23,134 @@ import UserAvatar from './UserAvatar';
 
 
 
-class TodoToggle extends Component {
+//class TodoToggle extends Component {
+
+//  state = {
+//    toggleState: true,
+//    //toggleState: getTaskStatus(this.props.taskId),
+//    visibilityState: ''
+//    //TODO db hook
+
+//  }
+
+
+//  constructor(props) {
+//    super(props);
+//    this.child = React.createRef();
+//    this.taskId = null;
+
+
+//    //if (getTaskStatus(this.props.taskId) == true) {
+//    //  this.setState({ toggleState: !this.state.toggleState })
+//    //  this.setState({ visibilityState: 'hidden' })
+//    //} else {
+//    //  this.setState({ toggleState: !this.state.toggleState })
+//    //  this.setState({ visibilityState: '' })
+//    //}
+//    this.getInitialState()
+//  }
+
+//  getInitialState() {
+//    console.log('GET INIT STATE')
+//    if (getTaskStatus(this.props.taskId) === false) {
+//      this.setState({ toggleState: !this.state.toggleState })
+//      this.setState({ visibilityState: 'hidden' })
+//      console.log('GET INIT STATE >> false' )
+//    } else {
+//      this.setState({ toggleState: !this.state.toggleState })
+//      this.setState({ visibilityState: '' })
+//      console.log('GET INIT STATE >> true')
+//    }
+//  }
+
+//  toggleDone() {
+//    if (this.state.toggleState === true) {
+//      this.setState({ toggleState: !this.state.toggleState })
+//      this.setState({ visibilityState: 'hidden' })
+//      //TODO db hook
+//      console.log('toggleState === true  >>  ' + this.props.taskId)
+//      const doneJSON = {
+//        "task_id": this.props.taskId,
+//        "user_id": window.sessionStorage.getItem("TEMP_uid")
+//      }
+//      setTaskDone(doneJSON)
+//    } else if (this.state.toggleState === false) {
+//      this.setState({ toggleState: !this.state.toggleState })
+//      this.setState({ visibilityState: '' })
+//      //TODO db hook
+//      console.log('toggleState === false  >>  ' + this.props.taskId)
+//      const undoneJSON = {
+//        "task_id": this.props.taskId,
+//        "user_id": "null"
+//      }
+//      setTaskUnDone(undoneJSON)
+//    }
+//  }
+
+//  render() {
+//    return (
+//      <CardActionArea onClick={() => this.toggleDone()} >
+//        <Paper elevation={2} >
+//          <CheckCircleOutlineIcon
+//            ref={this.child}
+//            sx={{
+//              width: '100%',
+//              height: '100%',
+//              visibility: this.state.visibilityState
+//            }}
+//          />
+//        </Paper>
+//      </CardActionArea>
+//    );
+//  }
+//}
+
+function TodoToggle({ taskId }) {
+
+  const [visibilityState, setvisibilityState] = useState('')
+
+  const child = React.createRef();
+
+  const toggleDone = () => {
+    console.log('toggleDone onClick')
+    if (visibilityState === 'hidden') {
+      setvisibilityState('')
+      //TODO db hook
+      console.log('toggleState === true  >>  ' + taskId)
+      const doneJSON = {
+        "task_id": taskId,
+        "user_id": window.sessionStorage.getItem("TEMP_uid")
+      }
+      setTaskDone(doneJSON)
+    } else if (visibilityState === '') {
+      setvisibilityState('hidden')
+      //TODO db hook
+      console.log('toggleState === false  >>  ' + taskId)
+      const undoneJSON = {
+        "task_id": taskId,
+        "user_id": "null"
+      }
+      setTaskUnDone(undoneJSON)
+    }
+  }
+
+  return (
+    <CardActionArea onClick={toggleDone} >
+      <Paper elevation={2} >
+        <CheckCircleOutlineIcon
+          ref={child}
+          sx={{
+            width: '100%',
+            height: '100%',
+            visibility: visibilityState
+          }}
+        />
+      </Paper>
+    </CardActionArea>
+  );
+}
+
+class TodoToggleOLD extends Component {
 
   state = {
     toggleState: true,
@@ -55,7 +182,7 @@ class TodoToggle extends Component {
     if (getTaskStatus(this.props.taskId) === false) {
       this.setState({ toggleState: !this.state.toggleState })
       this.setState({ visibilityState: 'hidden' })
-      console.log('GET INIT STATE >> false' )
+      console.log('GET INIT STATE >> false')
     } else {
       this.setState({ toggleState: !this.state.toggleState })
       this.setState({ visibilityState: '' })
