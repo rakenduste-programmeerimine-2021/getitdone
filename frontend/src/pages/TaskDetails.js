@@ -17,7 +17,7 @@ import Zoom from '@mui/material/Zoom';
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
-import { addNewTask } from '../components/API';
+import { addNewTask, editTask } from '../components/API';
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
 
@@ -64,16 +64,15 @@ function TaskDetails() {
         addNewTask(newTaskJSON)
         console.log('ADDED TO EVENT >> ' + window.sessionStorage.currentEvent)
       } else {
-        //TODO backend changes?
         const newEventJSON = {
-          //"event_id": state.events.openEventId,
-          //"event_name": event.target.eventname.value,
-          //"event_details": event.target.eventdetails.value,
-          ////"event_image_url": 'https://picsum.photos/500/300'
-          //"event_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()
+          "task_id": state.tasks.openTaskId,
+          "task_name": event.target.taskname.value,
+          "task_deadline": "2021-12-17",
+          "task_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime(),
+          "task_details": event.target.taskdetails.value
         }
-        //editEvent(newEventJSON)
-        console.log('TASK CHANGED >> ' + window.sessionStorage.currentEvent)
+        editTask(newEventJSON)
+        console.log('TASK CHANGED >> ' + state.tasks.openTaskId)
       }
       //TODO confirmation animation here
 

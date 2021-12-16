@@ -30,7 +30,7 @@ export function addNewTask(data) {
 
 export function editTask(data) {
   //TODO event description
-  axios.post('', data).then(resp => {
+  axios.post('http://localhost:8080/api/task/changetaskdetails', data).then(resp => {
     console.log('Edit Task')
   }).catch(error => {
     console.log(error)
