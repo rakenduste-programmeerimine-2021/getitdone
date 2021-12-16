@@ -174,7 +174,7 @@ function Task() {
                         wordBreak: "keep-all",
                         p: '6px',
                       }} variant="subtitle1">
-                        {moment(task.task_deadline).format('MMMM Do YYYY, h:mm:ss a')}
+                        {moment(task.task_deadline).format('MMMM Do YYYY')}
                       </Typography>
                     </Paper>
                   </Grid>

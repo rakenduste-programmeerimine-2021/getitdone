@@ -10,6 +10,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import produce from "immer";
+import * as moment from 'moment';
 import React, { useContext } from "react";
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Context } from "../webapp";
@@ -86,7 +87,13 @@ function EventCard() {
                           {evnt.event_name}
                         </Typography>
                       </Paper>
-                    </Grid>
+                      </Grid>
+                      <Grid item xs={2} >
+                        <Typography align={'left'} sx={{ p: '1px' }} noWrap variant="subtitle1" >
+                          {evnt.event_details}
+                        </Typography>
+                      </Grid>
+
                     <Grid item xs={2} >
                       <Typography align={'left'} sx={{ p: '1px' }} noWrap variant="subtitle1" >
                         {"Next deadline:"}
@@ -94,11 +101,10 @@ function EventCard() {
                     </Grid>
                     {/*<Grid item sx={{ minWidth: '280px' }} xs={2} >*/}
                     <Grid item sx={{ minWidth: '250px' }} xs={2} >
-                      <Paper sx={{ maxHeight: '40px', maxWidth: '100px' }} elevation={2} >
+                      <Paper sx={{ maxHeight: '40px', maxWidth: '160px' }} elevation={2} >
                           <Typography align={'left'} sx={{ p: '1px', wordBreak: "keep-all" }} variant="subtitle1" >
                           {/*// TODO no api for next deadline*/}
-                          {/*{evnt.event_next_deadline}*/}
-                            2021-1-17
+                            {moment('2021-01-17T00:00:00.000Z').format('MMMM Do YYYY')}
                         </Typography>
                       </Paper>
                     </Grid>
@@ -108,7 +114,7 @@ function EventCard() {
                       </Typography>
                     </Grid>
                     <Grid item sx={{ p: '1px' }} xs={4} >
-                      <Paper elevation={2} sx={{ p: '1px', maxWidth: '110px' }}>
+                      <Paper elevation={2} sx={{ p: '1px', maxWidth: '68px' }}>
                         <Grid container direction="row">
                           <Grid item xs={5} >
                             <Typography align={'left'} sx={{ p: '4px' }} variant="h6" >
@@ -116,12 +122,12 @@ function EventCard() {
                             </Typography>
                           </Grid>
                           <Grid item xs={2} >
-                            <Typography align={'center'} sx={{ p: '4px' }} variant="h6" >
+                              <Typography align={'center'} sx={{ p: '4px', pl:'0px' , pr: '7px' }} variant="h6" >
                               {'/'}
                             </Typography>
                           </Grid>
                           <Grid item xs={5} >
-                            <Typography align={'right'} sx={{ p: '4px', pr: '5px' }} variant="h6" >
+                            <Typography align={'right'} sx={{ p: '4px', pr: '7px' }} variant="h6" >
                                 {eventProgress(evnt.event_id)[1]}
                             </Typography>
                           </Grid>
