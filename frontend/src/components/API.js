@@ -37,24 +37,39 @@ export function editTask(data) {
   })
 }
 
-  //.post("/createtask", taskController.createTask)
-  //.post("/gettask", taskController.getTaskDetails)
-  //.post("/changetaskdetails", taskController.changeTaskDetails)
-  //.post("/geteventtasks", taskController.getEventTasks)
-  //.post("/completetask", taskController.completeTask)
+export function setTaskDone(data) {
+  //TODO event description
+  axios.post('http://localhost:8080/api/task/completetask', data).then(resp => {
+    console.log('TASK DONE')
+  }).catch(error => {
+    console.log(error)
+  })
+}
 
-//export function getEvents(uid, runAfter) {
-//  axios.get('http://localhost:3003/events').then(resp => {
-//    const setEvents = (data) => {
-//      setState(
-//        produce((draft) => {
-//          draft.events = data
-//        })
-//      );
-//    }
-//    runAfter
-//  });
-//}
+export function setTaskUnDone(data) {
+  //TODO event description
+  axios.post('http://localhost:8080/api/task/completetask', data).then(resp => {
+    console.log('TASK UNDONE')
+  }).catch(error => {
+    console.log(error)
+  })
+}
 
+export function getTaskStatus(taskId) {
+  //TODO event description
+  const reqBody = {
+    "task_id": taskId
+  }
+  var status = false
+  axios.post('http://localhost:8080/api/task/getcompletestatus', reqBody).then(resp => {
 
+    console.log('TASK Status >> ' + taskId)
+    console.log(resp.data)
+    status = resp.data
 
+  }).catch(error => {
+    console.log(error)
+  })
+
+  return status
+}

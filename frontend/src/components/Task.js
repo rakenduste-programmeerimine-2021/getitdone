@@ -11,6 +11,7 @@ import produce from "immer";
 import React, { Component, useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
+import { getTaskStatus, setTaskDone, setTaskUnDone } from './API';
 import UserAvatar from './UserAvatar';
 
 
@@ -26,14 +27,40 @@ class TodoToggle extends Component {
 
   state = {
     toggleState: true,
+    //toggleState: getTaskStatus(this.props.taskId),
     visibilityState: ''
     //TODO db hook
+
   }
+
 
   constructor(props) {
     super(props);
     this.child = React.createRef();
     this.taskId = null;
+
+
+    //if (getTaskStatus(this.props.taskId) == true) {
+    //  this.setState({ toggleState: !this.state.toggleState })
+    //  this.setState({ visibilityState: 'hidden' })
+    //} else {
+    //  this.setState({ toggleState: !this.state.toggleState })
+    //  this.setState({ visibilityState: '' })
+    //}
+    this.getInitialState()
+  }
+
+  getInitialState() {
+    console.log('GET INIT STATE')
+    if (getTaskStatus(this.props.taskId) === false) {
+      this.setState({ toggleState: !this.state.toggleState })
+      this.setState({ visibilityState: 'hidden' })
+      console.log('GET INIT STATE >> false' )
+    } else {
+      this.setState({ toggleState: !this.state.toggleState })
+      this.setState({ visibilityState: '' })
+      console.log('GET INIT STATE >> true')
+    }
   }
 
   toggleDone() {
@@ -42,11 +69,21 @@ class TodoToggle extends Component {
       this.setState({ visibilityState: 'hidden' })
       //TODO db hook
       console.log('toggleState === true  >>  ' + this.props.taskId)
+      const doneJSON = {
+        "task_id": this.props.taskId,
+        "user_id": window.sessionStorage.getItem("TEMP_uid")
+      }
+      setTaskDone(doneJSON)
     } else if (this.state.toggleState === false) {
       this.setState({ toggleState: !this.state.toggleState })
       this.setState({ visibilityState: '' })
       //TODO db hook
-      console.log('toggleState === false  >>  ' + this.taskId)
+      console.log('toggleState === false  >>  ' + this.props.taskId)
+      const undoneJSON = {
+        "task_id": this.props.taskId,
+        "user_id": "null"
+      }
+      setTaskUnDone(undoneJSON)
     }
   }
 
