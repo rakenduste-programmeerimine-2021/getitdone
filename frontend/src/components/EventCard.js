@@ -1,6 +1,7 @@
-import SettingsIcon from '@mui/icons-material/Settings';
+import EditIcon from '@mui/icons-material/Edit';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
@@ -9,11 +10,9 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import produce from "immer";
-import React, { useContext, useState } from "react";
-import { Link as RouterLink } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Context } from "../webapp";
-import CardActionArea from '@mui/material/CardActionArea';
-import { useNavigate } from 'react-router-dom';
 import { setCurrentEvent } from './TEMP_auth';
 
 function EventCard() {
@@ -142,8 +141,9 @@ function EventCard() {
                         sx={{ width: '45px', height: '45px' }}
                         color="secondary"
                         aria-label="settings" >
-                        <SettingsIcon>
-                        </SettingsIcon>
+                        {/*<SettingsIcon>*/}
+                        {/*</SettingsIcon>*/}
+                        <EditIcon />
                       </Fab>
                     </Grid>
                     <Grid item xs={10} >
