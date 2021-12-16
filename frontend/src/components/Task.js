@@ -136,12 +136,7 @@ function Task() {
                         </Grid>
                         {/*TODO some hidden element here*/}
                         <Grid item sx={{ margin: '4px' }} display={{ xs: "block", md: "none" }} xs={2} >
-                          <Avatar sx={{
-                            bgcolor: 'red',
-                            width: '35px',
-                            height: '35px'
-                          }}>
-                          </Avatar>
+                          <UserAvatar />
                         </Grid>
                         {/*TODO avatar overflow handle here*/}
                         <Grid item xs={1} >

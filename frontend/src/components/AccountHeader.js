@@ -27,7 +27,7 @@ function AccountHeader() {
         <UserAvatar />
       </Grid>
       <Grid item sx={{ display: "flex", justifyContent: "flex-start", pl:"7" }} xs={5}>
-        <Typography align={'left'} sx={{ p: '6px' }} noWrap variant="h6" >
+        <Typography align={'left'} sx={{ p: '6px', pl: '15px' }} noWrap variant="h6" >
           {userName}
         </Typography>
       </Grid>
