@@ -100,7 +100,7 @@ function Webapp({ children }) {
     <Context.Provider value={[state, setState]}>
       <meta
         name="viewport"
-        content="width=400, initial-scale=1, minimum-scale=0.5, maximum-scale=0.6"
+        content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86"
       />
       {children}
     </Context.Provider>
