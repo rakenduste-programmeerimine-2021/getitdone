@@ -9,10 +9,10 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import produce from "immer";
-import React, { Component, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
-import { getTaskStatus, setTaskDone, setTaskUnDone } from './API';
+import { setTaskDone, setTaskUnDone } from './API';
 import UserAvatar from './UserAvatar';
 
 
@@ -33,7 +33,7 @@ function TodoToggle({ taskId }) {
     "task_id": taskId
   }
   axios.post('http://localhost:8080/api/task/getcompletestatus', reqBody).then(resp => {  
-    if (resp.data == true) {
+    if (resp.data === true) {
       setvisibilityState('')
     } else {
       setvisibilityState('hidden')
