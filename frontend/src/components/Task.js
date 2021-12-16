@@ -7,8 +7,9 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 import produce from "immer";
-import React, { Component, useContext,useState } from "react";
+import React, { Component, useContext, useState } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 import { getTaskStatus, setTaskDone, setTaskUnDone } from './API';
@@ -107,9 +108,26 @@ import UserAvatar from './UserAvatar';
 
 function TodoToggle({ taskId }) {
 
-  const [visibilityState, setvisibilityState] = useState('')
+  const [visibilityState, setvisibilityState] = useState('hidden')
 
   const child = React.createRef();
+
+  const reqBody = {
+    "task_id": taskId
+  }
+  axios.post('http://localhost:8080/api/task/getcompletestatus', reqBody).then(resp => {
+
+    console.log('TASK Status >> ' + taskId)
+    console.log(resp.data)
+    if (resp.data == true) {
+      setvisibilityState('')
+    } else {
+      setvisibilityState('hidden')
+    }
+
+  }).catch(error => {
+    console.log(error)
+  })
 
   const toggleDone = () => {
     console.log('toggleDone onClick')
@@ -121,6 +139,7 @@ function TodoToggle({ taskId }) {
         "task_id": taskId,
         "user_id": window.sessionStorage.getItem("TEMP_uid")
       }
+      //console.log('<< initState >> ' + initState)
       setTaskDone(doneJSON)
     } else if (visibilityState === '') {
       setvisibilityState('hidden')
@@ -128,7 +147,7 @@ function TodoToggle({ taskId }) {
       console.log('toggleState === false  >>  ' + taskId)
       const undoneJSON = {
         "task_id": taskId,
-        "user_id": "null"
+        "user_id": null
       }
       setTaskUnDone(undoneJSON)
     }
