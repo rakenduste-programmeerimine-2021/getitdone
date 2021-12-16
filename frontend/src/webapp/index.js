@@ -96,7 +96,12 @@ function Webapp({ children }) {
   const [state, setState] = useState(initialState);
 
   return (
+
     <Context.Provider value={[state, setState]}>
+      <meta
+        name="viewport"
+        content="width=400, initial-scale=1, minimum-scale=0.5, maximum-scale=0.6"
+      />
       {children}
     </Context.Provider>
   )

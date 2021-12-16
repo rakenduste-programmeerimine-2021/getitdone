@@ -38,10 +38,6 @@ function EventCard() {
     );
   }
 
-
-
-
-
   //TODO sep this
   const handleEventClick = (id) => {
 
@@ -78,7 +74,7 @@ function EventCard() {
         {/*{state.events.data.map((evnt) => (*/}
         {state.events.data.map((evnt) => (
           <Grid item key={evnt.event_id} xs={12}>
-            <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
+            <Paper elevation={4} sx={{ minWidth: '400px', bgcolor: 'background.default' }}>
               <CardActionArea onClick={() => handleEventClick(evnt.event_id)}  >
               {/*<CardActionArea>*/}
                 <Grid container p={3} direction="row">
@@ -98,9 +94,11 @@ function EventCard() {
                     </Grid>
                     {/*<Grid item sx={{ minWidth: '280px' }} xs={2} >*/}
                     <Grid item sx={{ minWidth: '250px' }} xs={2} >
-                      <Paper sx={{ maxHeight: '40px', maxWidth: '170px' }} elevation={2} >
-                        <Typography align={'left'} sx={{ p: '1px', wordBreak: "keep-all" }} variant="subtitle1" >
-                          {evnt.event_next_deadline}
+                      <Paper sx={{ maxHeight: '40px', maxWidth: '100px' }} elevation={2} >
+                          <Typography align={'left'} sx={{ p: '1px', wordBreak: "keep-all" }} variant="subtitle1" >
+                          {/*// TODO no api for next deadline*/}
+                          {/*{evnt.event_next_deadline}*/}
+                            2021-1-17
                         </Typography>
                       </Paper>
                     </Grid>
