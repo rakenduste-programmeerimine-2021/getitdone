@@ -44,22 +44,25 @@ function TaskDetails() {
     setdoneOpen(true)
   }
 
+
+  console.log('SESS eventId >> ' + window.sessionStorage.currentEvent)
   const handleSave = (event) => {
     //TODO remove random imgurl
     event.preventDefault();
-    if (!window.currentEvent) {
+    if (window.sessionStorage.currentEvent) {
       console.log('SESS eventId >> OK')
       if (!state.tasks.openTaskId) {
         //TESTING ONLY
         //TODO date!!
         const newTaskJSON = {
-          "event_id": window.currentEvent,
+          "event_id": window.sessionStorage.currentEvent,
           "task_name": event.target.taskname.value,
           "task_deadline": "2021-1-17",
           "task_details": event.target.taskdetails.value,
           "task_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()
         }
         addNewTask(newTaskJSON)
+        console.log('ADDED TO EVENT >> ' + window.currentEvent)
       } else {
         //TODO backend changes?
         const newEventJSON = {
@@ -83,6 +86,7 @@ function TaskDetails() {
       };
       navDelay(800)
     } else {
+      console.log('TASK >> EVENT sess error')
       navigate('/eventpage')
     }
   

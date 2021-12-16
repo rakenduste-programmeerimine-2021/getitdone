@@ -22,8 +22,8 @@ function EventPage() {
   console.log('EVENT page load')
 
 
-  console.log('<< EVENT SESSION ID >>')
-  console.log(window.sessionStorage.getItem("TEMP_uid"))
+  //console.log('<< EVENT SESSION ID >>')
+  //console.log(window.sessionStorage.getItem("TEMP_uid"))
   const reqBody = {
     "user_id": window.sessionStorage.getItem("TEMP_uid")
     //"user_id": "727a9c2f-d80d-47c7-bba5-f6798630feb9"

@@ -41,7 +41,11 @@ function EventCard() {
 
   //TODO sep this
   const handleEventClick = (id) => {
+
     setCurrentEvent(id)
+    console.log('<< EVENT SESSION ID >>')
+    console.log(window.sessionStorage.getItem("currentEvent"))
+
     setState(
       produce((draft) => {
         draft.events.openEventId = id
