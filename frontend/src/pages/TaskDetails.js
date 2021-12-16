@@ -17,10 +17,11 @@ import Zoom from '@mui/material/Zoom';
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
-import { addNewTask, editTask } from '../components/API';
+import { addNewTask, deleteTask, editTask } from '../components/API';
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
-
+import axios from 'axios';
+import qs from 'qs';
 
 //TODO handle submit
 
@@ -91,12 +92,30 @@ function TaskDetails() {
   
     
   }
+  //const handleDelete = (event) => {
+  //  //TODO need delete api
+
+  //  console.log('DELETE HANDEL >> ')
+  //  deleteTask(state.tasks.openTaskId)
+  //  //TODO delete animation
+  //  navigate(-1)
+  //}
+
 
   const handleDelete = (event) => {
     //TODO need delete api
+
     console.log('DELETE HANDEL >> ')
 
+    deleteTask(state.tasks.openTaskId)
+
+    //TODO delete animation
+
+
+    navigate(-1)
   }
+
+  //}
 
   useEffect(() => {
     if (state.tasks.openTaskId != null) {
@@ -185,7 +204,7 @@ function TaskDetails() {
                 Save
               </Button>
 
-              <Button variant="outlined" startIcon={<DeleteIcon />}>
+              <Button variant="outlined" onClick={handleDelete} startIcon={<DeleteIcon />}>
                 Delete
               </Button>
             </Stack>

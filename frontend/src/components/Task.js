@@ -32,10 +32,7 @@ function TodoToggle({ taskId }) {
   const reqBody = {
     "task_id": taskId
   }
-  axios.post('http://localhost:8080/api/task/getcompletestatus', reqBody).then(resp => {
-
-    console.log('TASK Status >> ' + taskId)
-    console.log(resp.data)
+  axios.post('http://localhost:8080/api/task/getcompletestatus', reqBody).then(resp => {  
     if (resp.data == true) {
       setvisibilityState('')
     } else {

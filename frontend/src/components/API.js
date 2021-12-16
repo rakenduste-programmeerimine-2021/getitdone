@@ -1,5 +1,15 @@
 import axios from 'axios';
 
+export function deleteTask(taskId) {
+
+  axios.delete(
+    'http://localhost:8080/api/task/deletetask',
+    {
+      data: { task_id: taskId },
+    });
+  console.log('TASK DELETED >> ' + taskId)
+
+}
 
 export function addNewEvent(data) {
   //TODO event description
@@ -73,3 +83,5 @@ export function getTaskStatus(taskId) {
 
   return status
 }
+
+
