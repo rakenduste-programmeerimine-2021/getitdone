@@ -37,8 +37,6 @@ export function eventProgress(eventId) {
   //    eTotal = resp.data
 
   //  }));
-  console.log('EVENT PROGRESS >> ' + eventId)
-  console.log([eDone, eTotal])
   return [eDone, eTotal]
 }
 
