@@ -14,6 +14,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 import { setTaskDone, setTaskUnDone } from './API';
 import UserAvatar from './UserAvatar';
+import moment from 'moment';
 
 
 
@@ -173,7 +174,7 @@ function Task() {
                         wordBreak: "keep-all",
                         p: '6px',
                       }} variant="subtitle1">
-                        {task.task_deadline}
+                        {moment(task.task_deadline).format('MMMM Do YYYY, h:mm:ss a')}
                       </Typography>
                     </Paper>
                   </Grid>
