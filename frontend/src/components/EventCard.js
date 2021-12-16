@@ -61,8 +61,11 @@ function EventCard() {
   }
 
 
-  const TEMP_TasksDone = '100'
-  const TEMP_TasksToDo = '300'
+  var TEMP_TasksDone = 0
+  var TEMP_TasksToDo = 0
+
+//evnt.event_ideventProgress(evnt.event_id)
+
   const TEMP_TasksProgress = 100 * (TEMP_TasksDone / TEMP_TasksToDo)
 
   console.log('EVENT CARD MAP')
@@ -111,7 +114,7 @@ function EventCard() {
                         <Grid container direction="row">
                           <Grid item xs={5} >
                             <Typography align={'left'} sx={{ p: '4px' }} variant="h6" >
-                              {TEMP_TasksDone}
+                                {eventProgress(evnt.event_id)[0]}
                             </Typography>
                           </Grid>
                           <Grid item xs={2} >
@@ -121,7 +124,7 @@ function EventCard() {
                           </Grid>
                           <Grid item xs={5} >
                             <Typography align={'right'} sx={{ p: '4px', pr: '5px' }} variant="h6" >
-                              {TEMP_TasksToDo}
+                                {eventProgress(evnt.event_id)[1]}
                             </Typography>
                           </Grid>
                         </Grid>
@@ -129,7 +132,7 @@ function EventCard() {
                       <Box sx={{ width: '70%', maxWidth: '130px', pt: '20px' }}>
                         <LinearProgress
                           variant="determinate"
-                          value={TEMP_TasksProgress}
+                            value={eventProgress(evnt.event_id)[0] / eventProgress(evnt.event_id)[1] * 100 }
                           sx={{ height: '12px', borderRadius: '5px' }}
                         />
                       </Box>
