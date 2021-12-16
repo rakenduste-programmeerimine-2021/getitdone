@@ -62,7 +62,7 @@ function TaskDetails() {
           "task_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()
         }
         addNewTask(newTaskJSON)
-        console.log('ADDED TO EVENT >> ' + window.currentEvent)
+        console.log('ADDED TO EVENT >> ' + window.sessionStorage.currentEvent)
       } else {
         //TODO backend changes?
         const newEventJSON = {
@@ -73,7 +73,7 @@ function TaskDetails() {
           //"event_image_url": "https://picsum.photos/500/300/?random&rnd" + new Date().getTime()
         }
         //editEvent(newEventJSON)
-        //console.log('EVENT CHANGED >> ' + state.events.openEventId)
+        console.log('TASK CHANGED >> ' + window.sessionStorage.currentEvent)
       }
       //TODO confirmation animation here
 
