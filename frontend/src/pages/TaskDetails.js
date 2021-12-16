@@ -1,4 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import SaveIcon from '@mui/icons-material/Save';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -20,8 +21,6 @@ import AccountHeader from '../components/AccountHeader';
 import { addNewTask, deleteTask, editTask } from '../components/API';
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
-import axios from 'axios';
-import qs from 'qs';
 
 //TODO handle submit
 
@@ -38,11 +37,18 @@ function TaskDetails() {
   const [timeValue, setTimeValue] = React.useState();
 
   const [checked, setChecked] = React.useState(false);
-  const [doneOpen, setdoneOpen] = React.useState(false);
+  const [doneOpen, setDoneOpen] = React.useState(false);
+  const [checkedDelete, setCheckedDelete] = React.useState(false);
+  const [doneDelete, setDoneDelete] = React.useState(false);
 
   const handleDone = (event) => {
     setChecked((prev) => !prev);
-    setdoneOpen(true)
+    setDoneOpen(true)
+  }
+
+  const handleDeletePopup = (event) => {
+    setCheckedDelete((prev) => !prev);
+    setDoneDelete(true)
   }
 
 
@@ -109,10 +115,14 @@ function TaskDetails() {
 
     deleteTask(state.tasks.openTaskId)
 
-    //TODO delete animation
 
-
-    navigate(-1)
+    handleDeletePopup()
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const navDelay = async (time) => {
+      await delay(time);
+      navigate(-1)
+    };
+    navDelay(800)
   }
 
   //}
@@ -218,6 +228,20 @@ function TaskDetails() {
                   {/*        <Zoom in={checked}>{icon}</Zoom>*/}
                   <Zoom in={checked} style={{ transitionDelay: checked ? '300ms' : '0ms' }}>
                     <SaveIcon sx={{ width: '100%', height: '100%' }} />
+                  </Zoom>
+                </Box>
+              </Box>
+            </Popover>
+            <Popover
+              open={doneDelete}
+              anchorReference={"none"}
+              sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+            >
+              <Box >
+                <Box sx={{ display: 'flex' }}>
+                  {/*        <Zoom in={checked}>{icon}</Zoom>*/}
+                  <Zoom in={checkedDelete} style={{ transitionDelay: checked ? '300ms' : '0ms' }}>
+                    <DeleteForeverIcon sx={{ width: '100%', height: '100%', fill: 'darkred' }} />
                   </Zoom>
                 </Box>
               </Box>
