@@ -86,7 +86,7 @@ function Task() {
     <Container>
       <Grid container spacing={5} direction="column">
         {state.tasks.data.map((task) => (
-          <Grid item key={task.id} xs={12} >
+          <Grid item key={task.task_id} xs={12} >
             <Paper elevation={4} sx={{ bgcolor: 'background.default' }}>
               <Grid container p={3}>
 
@@ -95,7 +95,7 @@ function Task() {
                     <Paper sx={{ width: '100%', height: '100%', maxHeight: '45px', minWidth: '250px' }} elevation={2} >
                       <Typography align={'left'} sx={{ p: '6px' }} noWrap variant="h6" >
 
-                        {task.name}
+                        {task.task_name}
 
                       </Typography>
                     </Paper>
@@ -139,14 +139,14 @@ function Task() {
                       overflow: "hidden",
                     }} gutterBottom variant="body2">
 
-                      {task.details}
+                      {task.task_details}
                     </Typography>
                   </Grid>
                 </Grid>
                 <Grid item  xs={1}>
                 </Grid>
                 <Grid item sx={{ minWidth: '70px', minHeight: '70px' }} md={2} xs={3}>
-                  <TodoToggle taskId={task.id}/>
+                  <TodoToggle taskId={task.task_id}/>
                 </Grid>
                 <Grid container item sx={{ maxHeight: '45px', maxWidth: '355px', minWidth: '355px' }} xs={8}>
                   <Grid item xs={6}>
@@ -156,7 +156,7 @@ function Task() {
                         wordBreak: "keep-all",
                         p: '6px',
                       }} variant="subtitle1">
-                        {task.deadline}
+                        {task.task_deadline}
                       </Typography>
                     </Paper>
                   </Grid>
@@ -167,7 +167,7 @@ function Task() {
                   {/*<Grid item md={2} xs={1}>*/}
                   <Grid item xs={1}>
                     <Fab
-                      onClick={() => handleEditClick(task.id)}
+                      onClick={() => handleEditClick(task.task_id)}
                       component={RouterLink} to="/taskdetails"
                       sx={{ width: '45px', height: '45px' }}
                       color="secondary"

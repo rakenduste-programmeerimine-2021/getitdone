@@ -42,7 +42,7 @@ function emptyTask() {
 //TODO fix this 
 function emptyEvent() {
   return {
-    event_i: '',
+    event_id: '',
     event_name: "TEST EVENT 1",
     event_img_url: "https://source.unsplash.com/random",
     event_details: "Lorem Ipsum is simply dummy text of the printing ",

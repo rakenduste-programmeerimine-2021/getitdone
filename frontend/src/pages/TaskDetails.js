@@ -102,10 +102,10 @@ function TaskDetails() {
   useEffect(() => {
     if (state.tasks.openTaskId != null) {
       var taskDataPre = state.tasks.data.find(item => {
-        return item.id === state.tasks.openTaskId
+        return item.task_id === state.tasks.openTaskId
       })
       setData(taskDataPre)
-      setTimeValue(taskDataPre.deadline)
+      setTimeValue(taskDataPre.task_deadline)
     } 
   }, [state.tasks.data, state.tasks.openTaskId]);
 

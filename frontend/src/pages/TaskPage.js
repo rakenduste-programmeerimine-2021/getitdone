@@ -15,27 +15,67 @@ function TaskPage() {
 
   const [state, setState] = useContext(Context);
 
-  //const setTasks = (data) => {
-  //  setState(
-  //    produce((draft) => {
-  //      draft.tasks = data
-  //    })
-  //  );
-  //}
+  //useEffect(() => {
+  //  axios.get('http://localhost:3003/tasks').then(resp => {
+  //    //setTasks(resp)
+  //    const setTasks = (data) => {
+  //      setState(
+  //        produce((draft) => {
+  //          draft.tasks = data
+  //        })
+  //      );
+  //    }
+  //    setTasks(resp)
+  //  });
+  //}, [setState]);
 
+
+  //useEffect(() => {
+  //  axios.get('http://localhost:3003/tasks').then(resp => {
+  //    //setTasks(resp)
+  //    const setTasks = (data) => {
+  //      setState(
+  //        produce((draft) => {
+  //          draft.tasks = data
+  //        })
+  //      );
+  //    }
+  //    setTasks(resp)
+  //  });
+  //}, [setState]);
+
+
+  const reqBody = {
+    //"event_id": "49b58445-0c96-4c55-b40e-391e224438fe"
+    "event_id": window.sessionStorage.currentEvent
+  }
   useEffect(() => {
-    axios.get('http://localhost:3003/tasks').then(resp => {
-      //setTasks(resp)
-      const setTasks = (data) => {
-        setState(
-          produce((draft) => {
-            draft.tasks = data
-          })
-        );
+    const makeTaskReq = async () => {
+      try {
+        axios.post('http://localhost:8080/api/task/geteventtasks', reqBody).then(resp => {
+          const setTasks = (data) => {
+            setState(
+              produce((draft) => {
+                //draft.events = data
+                draft.tasks.data = data.data.eventTasks
+
+              })
+            );
+          }
+          setTasks(resp)
+        }).catch(error => {
+          console.log({
+            error
+          });
+        })
+      } catch (err) {
+        console.error(err);
       }
-      setTasks(resp)
-    });
+    }
+    makeTaskReq()
+
   }, [setState]);
+
 
 
 
