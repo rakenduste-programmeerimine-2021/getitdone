@@ -74,6 +74,7 @@ function Task() {
   const [state, setState] = useContext(Context);
 
   const handleEditClick = (id) => {
+    console.log('handleEditClick => ' + id)
     setState(
       produce((draft) => {
         draft.tasks.openTaskId = id

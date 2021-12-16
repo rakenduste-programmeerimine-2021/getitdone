@@ -104,6 +104,8 @@ function TaskDetails() {
       var taskDataPre = state.tasks.data.find(item => {
         return item.task_id === state.tasks.openTaskId
       })
+      console.log('<< TASK DATA PRE >>')
+      console.log(taskDataPre)
       setData(taskDataPre)
       setTimeValue(taskDataPre.task_deadline)
     } 
@@ -141,7 +143,7 @@ function TaskDetails() {
                 multiline
                 rows={1}
                 required
-                defaultValue={taskData.name}
+                defaultValue={taskData.task_name}
                 //helperText="Some important text"
               />
 
@@ -158,7 +160,7 @@ function TaskDetails() {
                 label="Task description"
                 multiline
                 rows={3}
-                defaultValue={taskData.details}
+                defaultValue={taskData.task_details}
               />
 
               {/*TODO fix placeholder*/}
