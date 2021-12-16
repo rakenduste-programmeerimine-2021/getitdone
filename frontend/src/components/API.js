@@ -11,6 +11,17 @@ export function deleteTask(taskId) {
 
 }
 
+export function deleteEvent(eventId) {
+
+  axios.delete(
+    'http://localhost:8080/api/event/deleteevent',
+    {
+      data: { event_id: eventId },
+    });
+  console.log('EVENT DELETED >> ' + eventId)
+
+}
+
 export function addNewEvent(data) {
   //TODO event description
   axios.post('http://localhost:8080/api/event/create', data).then(resp => {
