@@ -104,7 +104,7 @@ function EventCard() {
                       <Paper sx={{ maxHeight: '40px', maxWidth: '160px' }} elevation={2} >
                           <Typography align={'left'} sx={{ p: '1px', wordBreak: "keep-all" }} variant="subtitle1" >
                           {/*// TODO no api for next deadline*/}
-                            {moment('2021-01-17T00:00:00.000Z').format('MMMM Do YYYY')}
+                            {moment('2022-01-17T00:00:00.000Z').format('MMMM Do YYYY')}
                         </Typography>
                       </Paper>
                     </Grid>

@@ -1,17 +1,10 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import AccountHeader from '../components/AccountHeader';
-import { eventProgress } from '../components/API';
+import { getTaskStatus } from '../components/API';
 
 
 
 
 test('render about link', () => {
-  console.log('this is a test')
-  //render(<AccountHeader/>);
-  //expect(screen.getByText(/about/)).toBeInTheDocument();
-  //var test1 = eventProgress()
-  //expect(test1).toBe([1, 3]);
 
-  expect(eventProgress()).toExist;
+  expect(getTaskStatus("d4f61d2f-89e5-4eb0-87ac-a092f887f122")).toBe(false);
+
 })
