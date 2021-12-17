@@ -6,31 +6,35 @@ import React, { useContext } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import { Context } from "../webapp";
 import UserAvatar from './UserAvatar';
+import LogoutButton from './LogoutButton';
 
 function AccountHeader() {
 
-  const [state, setState] = useContext(Context);
+  const [state] = useContext(Context);
 
   console.log(state)
 
-  var userName = state.auth.name;
+  var userName = window.sessionStorage.getItem("name");
   if (!userName) {
     userName = 'DEFAULT TESTING USER'
   }
 
-  console.log(userName)
 
   return (
 
     <Grid container direction="row">
-      <Grid item sx={{ display: "flex", justifyContent: "flex-start" }} xs={8}>
-        <Typography align={'left'} sx={{ p: '6px' }} noWrap variant="h6" >
+      <Grid item sx={{ display: "flex", justifyContent: "flex-start" }} xs={1}>
+        <UserAvatar />
+      </Grid>
+      <Grid item sx={{ display: "flex", justifyContent: "flex-start", pl:"7" }} xs={5}>
+        <Typography align={'left'} sx={{ p: '6px', pl: '15px' }} noWrap variant="h6" >
           {userName}
         </Typography>
       </Grid>
       <Grid item xs={2}>
       </Grid>
-      <Grid item xs={1}>
+
+      <Grid item sx={{ display: "flex", justifyContent: "flex-end" }} xs={2}>
         <Fab
           //onClick={() => handleEditClick(evnt.event_id)}
           component={RouterLink} to="/profilesettings"
@@ -41,10 +45,10 @@ function AccountHeader() {
           </SettingsIcon>
         </Fab>
       </Grid>
-
-      <Grid item sx={{ display: "flex", justifyContent: "flex-end" }} xs={1}>
-        <UserAvatar   />
+      <Grid item sx={{ display: "flex", justifyContent: "flex-end" }} xs={2}>
+        <LogoutButton  />
       </Grid>
+
     </Grid>
   )
 }

@@ -42,7 +42,7 @@ function emptyTask() {
 //TODO fix this 
 function emptyEvent() {
   return {
-    event_i: '',
+    event_id: '',
     event_name: "TEST EVENT 1",
     event_img_url: "https://source.unsplash.com/random",
     event_details: "Lorem Ipsum is simply dummy text of the printing ",
@@ -79,11 +79,13 @@ const initialAuth = {
   email: null
 }
 
-const initialState = ({
+export const initialState = ({
   events: initialEvents,
   tasks: initialTasks,
   auth: initialAuth,
 })
+
+
 
 export const Context = createContext()
 
@@ -94,7 +96,12 @@ function Webapp({ children }) {
   const [state, setState] = useState(initialState);
 
   return (
+
     <Context.Provider value={[state, setState]}>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86"
+      />
       {children}
     </Context.Provider>
   )

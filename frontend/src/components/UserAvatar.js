@@ -1,5 +1,4 @@
 import Avatar from '@mui/material/Avatar';
-import CardMedia from '@mui/material/CardMedia';
 
 function UserAvatar() {
   //TODO enable custom avatar

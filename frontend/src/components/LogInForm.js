@@ -2,8 +2,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
@@ -13,6 +11,7 @@ import produce from "immer";
 import { useContext } from "react";
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Context } from "../webapp";
+import { getSessAuth, setSessAuth } from "./TEMP_auth";
 
 
 //default MUI LogIn page, based on
@@ -27,6 +26,14 @@ function LogInForm() {
   console.log(state)
   console.log(setState)
 
+
+  //window.sessionStorage.setItem("authTest", "123");
+
+  //console.log('AUTH TEST >> ')
+  //console.log(window.sessionStorage.getItem("authTest"))
+  //window.sessionStorage.getItem("key");
+
+
   const handleLogIn = (event) => {
     event.preventDefault();
 
@@ -40,14 +47,17 @@ function LogInForm() {
       const setAuth = (data) => {
         setState(
           produce((draft) => {
-            draft.auth.email = data.email
-            draft.auth.id = data.id
-            draft.auth.token = data.token
-            draft.auth.name = data.name
+            //draft.auth.email = data.email
+            //draft.auth.id = data.id
+            //draft.auth.token = data.token
+            //draft.auth.name = data.name
+            setSessAuth(data.token, data.id,  data.name, data.email)
+            getSessAuth()
           })
         );
       }
       setAuth(resp.data)
+
       navigate('/eventpage')
     }).catch(error => {
       console.log({
@@ -98,10 +108,10 @@ function LogInForm() {
           id="password"
           autoComplete="current-password"
         />
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
-        />
+        {/*<FormControlLabel*/}
+        {/*  control={<Checkbox value="remember" color="primary" />}*/}
+        {/*  label="Remember me"*/}
+        {/*/>*/}
         <Button
           type="submit"
           fullWidth

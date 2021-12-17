@@ -1,12 +1,9 @@
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React, { useContext } from "react";
-import { Link as RouterLink } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
@@ -20,8 +17,8 @@ function ProfileSettings() {
   //TODO split name
   //TODO account settings change API
   //TODO handle API endpoints
-  const name = state.auth.name;
-  const email = state.auth.email;
+  const name = window.sessionStorage.getItem("name");
+  const email = window.sessionStorage.getItem("email");
 
 
   return (

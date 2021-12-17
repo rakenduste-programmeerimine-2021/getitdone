@@ -36,25 +36,10 @@ function SignUpForm() {
     axios.post('http://localhost:8080/api/user/register', signinOut).then(resp => {
 
       console.log(resp)
-      navigate('/eventpage')
+      navigate('/login')
 
-      //TODO cont
-      //setTasks(resp)
-      //const setTasks = (data) => {
-      //  setState(
-      //    produce((draft) => {
-      //      draft.tasks = data
-      //    })
-      //  );
-      //}
-      //setTasks(resp)
     });
 
-    //setState(
-    //  produce((draft) => {
-    //    draft.tasks.openTaskId = id
-    //  })
-    //);
   }
 
   return (

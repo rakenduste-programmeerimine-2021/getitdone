@@ -9,6 +9,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
 import BackButton from '../components/BackButton';
 import EventCard from '../components/EventCard';
+import { getSessAuth } from '../components/TEMP_auth';
 import { Context } from "../webapp";
 
 
@@ -18,19 +19,57 @@ function EventPage() {
 
 
   //TODO fix double get
-  console.log(state)
+  console.log('EVENT page load')
+
+
+  //console.log('<< EVENT SESSION ID >>')
+  //console.log(window.sessionStorage.getItem("TEMP_uid"))
+  const reqBody = {
+    "user_id": window.sessionStorage.getItem("TEMP_uid")
+    //"user_id": "727a9c2f-d80d-47c7-bba5-f6798630feb9"
+  }
+  //axios get/post disc
+  //https://stackoverflow.com/questions/46404051/send-object-with-axios-get-request
 
   useEffect(() => {
-    axios.get('http://localhost:3003/events').then(resp => {
-      const setEvents = (data) => {
-        setState(
-          produce((draft) => {
-            draft.events = data
-          })
-        );
+    const makeEventReq = async () => {
+      try {
+        //axios.get('http://localhost:3003/events').then(resp => {
+        axios.post('http://localhost:8080/api/event/getuserevents', reqBody).then(resp => {
+
+          console.log('Axios request sent')
+          console.log(resp)
+          //console.log(state)
+          const setEvents = (data) => {
+            console.log('SET EVENTS >> ')
+            console.log(data)
+            //console.log(data.data.userEvents)
+            setState(
+              produce((draft) => {
+                //draft.events = data
+                draft.events.data = data.data.userEvents
+
+              })
+            );
+          }
+          console.log('NEW STATUS >>')
+          console.log(state)
+          setEvents(resp)
+        }).catch(error => {
+          console.log({
+            error
+            //error,
+            //'error status': error.response.status,
+            //'error response': error.response.data
+          });
+        })
+      } catch (err) {
+        console.error(err);
       }
-      setEvents(resp)
-    });
+    }
+    makeEventReq()
+    getSessAuth()
+
   }, [setState]);
 
 
