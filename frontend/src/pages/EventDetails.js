@@ -17,13 +17,13 @@ import Zoom from '@mui/material/Zoom';
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AccountHeader from '../components/AccountHeader';
-import { addNewEvent, deleteEvent, editEvent, eventProgress } from "../components/API";
+import { addNewEvent, deleteEvent, editEvent } from "../components/API";
 import BackButton from '../components/BackButton';
 import { Context } from "../webapp";
 
 function EventDetails() {
 
-  const [state, setState] = useContext(Context);
+  const [state] = useContext(Context);
   const navigate = useNavigate();
 
   const [eventData, setData] = useState([]);

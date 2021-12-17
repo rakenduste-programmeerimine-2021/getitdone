@@ -10,7 +10,7 @@ import LogoutButton from './LogoutButton';
 
 function AccountHeader() {
 
-  const [state, setState] = useContext(Context);
+  const [state] = useContext(Context);
 
   console.log(state)
 
@@ -34,7 +34,7 @@ function AccountHeader() {
       <Grid item xs={2}>
       </Grid>
 
-      <Grid item item sx={{ display: "flex", justifyContent: "flex-end" }} xs={2}>
+      <Grid item sx={{ display: "flex", justifyContent: "flex-end" }} xs={2}>
         <Fab
           //onClick={() => handleEditClick(evnt.event_id)}
           component={RouterLink} to="/profilesettings"

@@ -7,7 +7,7 @@ import { endSessAuth } from './TEMP_auth';
 
 function LogoutButton() {
   //TODO fix this after new auth
-  const [state, setState] = useContext(Context);
+  const [setState] = useContext(Context);
   const navigate = useNavigate();
 
   const handleLogoutBtn = () => {

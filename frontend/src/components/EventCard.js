@@ -58,12 +58,11 @@ function EventCard() {
   }
 
 
-  var TEMP_TasksDone = 0
-  var TEMP_TasksToDo = 0
+  //var TEMP_TasksDone = 0
+  //var TEMP_TasksToDo = 0
 
-//evnt.event_ideventProgress(evnt.event_id)
 
-  const TEMP_TasksProgress = 100 * (TEMP_TasksDone / TEMP_TasksToDo)
+  //const TEMP_TasksProgress = 100 * (TEMP_TasksDone / TEMP_TasksToDo)
 
   console.log('EVENT CARD MAP')
   console.log(state.events.data)
