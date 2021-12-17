@@ -47,7 +47,7 @@ function Home() {
         <Typography align='center' variant="h3" gutterBottom component="div">
           Get It Done
         </Typography>
-        <Typography align='center' variant="subtitle1" gutterBottom component="div">
+        <Typography align='center' variant="subtitle1" color="#787878" gutterBottom component="div">
           Create and manage your TODO list in one, convenient app.
         </Typography>
 

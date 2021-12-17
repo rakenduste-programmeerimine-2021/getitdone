@@ -15,6 +15,14 @@ const theme = createTheme({
       default: '#f1f8e9',
     },
   },
+  typography: {
+    h3: {
+      fontFamily: 'Roboto',
+      fontWeight: 600,
+      lineHeight: 1.29,
+      letterSpacing: '0.05em',
+    },
+  },
 });
 
 export default theme;
