@@ -2,7 +2,7 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Grid, Paper, Stack, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import React, { useEffect } from "react";
@@ -17,74 +17,51 @@ function Home() {
   useEffect(() => {
     getSessAuth()
   })
-  
+
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
+
+  //var imgUrl = 'https://picsum.photos/' + getWindowDimensions().width + '/' + getWindowDimensions().height
+
+  const imgUrl = 'https://picsum.photos/300/300'
+
+  //console.log(imgWidthStr)
+
   return (
-    <div className="Home">
-      <Typography variant="h2">
-        TEST GID
-      </Typography>
-      <Stack spacing={2} direction="row">
-        <Button variant="text">Text</Button>
-        <Button variant="contained">Contained</Button>
-        <Button variant="outlined">Outlined</Button>
-      </Stack>
-      <Box sx={{ '& > :not(style)': { m: 1 } }}>
-        <Fab color="primary" aria-label="add">
-          <AddIcon />
-        </Fab>
-        <Fab color="secondary" aria-label="edit">
-          <EditIcon />
-        </Fab>
-        <Fab variant="extended">
-          <NavigationIcon sx={{ mr: 1 }} />
-          Navigate
-        </Fab>
-        <Fab disabled aria-label="like">
-          <FavoriteIcon />
-        </Fab>
-      </Box>
 
-      <Box sx={{ '& > :not(style)': { m: 1 } }}>
-        <Stack spacing={2}>
-          <Button component={RouterLink} to="/login">
-            LogIn page
-          </Button>
-          <Button component={RouterLink} to="/signup">
-            SignUp page
-          </Button>
-          <Button component={RouterLink} to="/taskdetails">
-            Task DETAILS page
-          </Button>
-          <Button component={RouterLink} to="/eventdetails">
-            Event DETAILS page
-          </Button>
-          <Button component={RouterLink} to="/taskpage">
-            Task page
-          </Button>
-          <Button component={RouterLink} to="/eventpage">
-            Event page
-          </Button>
-          <Button component={RouterLink} to="/profilesettings">
-            Profile Settings Page
-          </Button>
+    //<Box sx={{ flexGrow: 1 }}>
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      spacing={0}
+      sx={{ flexDirection: { xs: "column", md: "row" }, minHeight: '100vh'  }}
+    >
+      <Grid align='center' item xs={6}>
+        <Typography align='center' variant="h3" gutterBottom component="div">
+          Get It Done
+        </Typography>
+        <Typography align='center' variant="subtitle1" gutterBottom component="div">
+          Create and manage your TODO list in one, convenient app.
+        </Typography>
+
+        <Stack sx={{ m: 4, width: '330px' }} spacing={2} >
+          <Button size="large" component={RouterLink} to="/login" variant="contained">Log in now!</Button>
+          <Button size="medium" component={RouterLink} to="/signup" variant="outlined">Sign up</Button>
         </Stack>
-      </Box>
-
-      <div>
-        <Task>
-
-        </Task>
-      </div>
-
-
-      <div>
-        <EventCard>
-
-        </EventCard>
-      </div>
-
-
-    </div>
+      </Grid>
+      <Grid item xs={6}>
+        <img src={imgUrl} style={{borderRadius: '10%'}} />
+      </Grid>
+    </Grid>
+    //</Box>
+    //style = { borderRadius: "50%" }
   );
 }
 export default Home;
